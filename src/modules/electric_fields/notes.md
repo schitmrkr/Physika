@@ -30,4 +30,4 @@ $$
 
 #### Superposition principle:
 
-If multiple charges exists, total E or V is the vector sum of individual E or V.
+If multiple charges exists, total $E$ or $V$ is the vector sum of individual $E$ or $V$.

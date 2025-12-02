@@ -5,9 +5,9 @@ from utils import electric_field
 
 
 def visualize_electric_field(
-    num_charges: int = 3,
-    grid_size: int = 11,
-    field_range: float = 10.0e-6,
+    num_charges: int = 5,
+    grid_size: int = 10,
+    field_range: float = 10.0e-11,
     seed: int = 42,
     # Electron charge
     charge: float = 1.60217663e-19,

@@ -4,7 +4,7 @@ Produced by moving charges or current. Uses right hand rule. It's unit is Tesla(
 
 #### Lorent's Force
 
-A charge **_q_** moving with velocity **_v_** in a magnetic field **_B_** experiences a force **_F_** given by:
+A charge $q$ moving with velocity $v$ in a magnetic field $B$ experiences a force $F$ given by:
 
 $$
 F = q(v \times B)
@@ -14,7 +14,7 @@ Force is perpendicular to both velocity and magnetic field. This is why charges 
 
 #### Magnetic Force On Currents
 
-Current **_I_** in a magnetic field **_B_** in a wire of length **_L_** experiences a force **_F_** given by:
+Current $I$ in a magnetic field $B$ in a wire of length $L$ experiences a force $F$ given by:
 
 $$
 F = I(L \times B)
@@ -24,7 +24,7 @@ $$
 
 #### Biot-Savart Law
 
-Magnetic field due to small current element **_Idl_** at a distance **_r_** is given by:
+Magnetic field due to small current element $Idl$ at a distance $r$ is given by:
 
 $$
 \mathbf{B} = \frac{\mu_0}{4\pi} \frac{I \mathbf{dl} \times \mathbf{r}}{r^3}
@@ -47,13 +47,13 @@ Loop could be a circle, square or any shape. Left side is the line integral of m
 Straight wire:
 
 $$
-\mathbf{B} = \frac{\mu_0 I}{2\pi r}
+\mathbf{B} = \frac{\mu_0 I}{2\pi r} \hat{\phi}
 $$
 
 Circular loop (magnetic field at the center):
 
 $$
-\mathbf{B} = \frac{\mu_0 I}{2R}
+\mathbf{B} = \frac{\mu_0 I}{2R} \hat{z}
 $$
 
 ### Electromagnetic Induction
