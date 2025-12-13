@@ -5,23 +5,23 @@ from matplotlib.animation import FuncAnimation
 # -------------------------
 # Parameters
 # -------------------------
-f0 = 2e14  # Hz
+f0 = 2e7  # Hz
 T = 1 / f0  # period
-amp0 = 1e19
+amp0 = 1
 c = 3e8  # speed of light
 
 # Grid: make 4 wavelengths fit in the domain
-n_waves = 4
+n_waves = 20
 lambda0 = c / f0
 L = n_waves * lambda0
-nx = ny = 200
+nx = ny = 500
 x = np.linspace(0, L, nx)
 y = np.linspace(0, L, ny)
 X, Y = np.meshgrid(x, y)
 src_x, src_y = L / 2, L / 2
 
-# Time: 2 periods, enough steps
-n_periods = 2
+# Time: 2 periods
+n_periods = 10
 dt = 0.02 * T
 nt = int(n_periods * T / dt) + 1
 time = np.arange(nt) * dt
@@ -43,16 +43,25 @@ im = ax.imshow(
 )
 ax.set_xlabel("X (μm)")
 ax.set_ylabel("Y (μm)")
-plt.colorbar(im, ax=ax, label="Ez (V/m)")
+cbar = plt.colorbar(im, ax=ax, label="Ez (V/m)")
 
 
-# Animation function
 def animate(n):
     t = time[n]
-    pulse = np.sin(2 * np.pi * f0 * (t - R / c))
-    # single-period envelope
-    pulse *= (t - R / c >= 0) & (t - R / c <= T)
+    # Wavefront: only where t >= R/c
+    mask = (t - R / c >= 0) & (t - R / c <= T)
+
+    # Start with NaN outside the wavefront
+    pulse = np.full_like(R, np.nan)
+    pulse[mask] = np.sin(2 * np.pi * f0 * (t - R[mask] / c))
+
     im.set_array(pulse)
+
+    # Dynamic color scaling based on current pulse amplitude
+    current_max = np.nanmax(np.abs(pulse))
+    if current_max > 0:
+        im.set_clim(-current_max, current_max)
+
     ax.set_title(f"Ez radial propagation | t = {t*1e15:.2f} fs")
     return (im,)
 
