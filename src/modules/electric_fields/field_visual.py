@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import List, Tuple
 from utils import electric_field
+from common.constants import unit_charge
 
 
 def visualize_electric_field(
@@ -10,7 +11,7 @@ def visualize_electric_field(
     field_range: float = 10.0e-11,
     seed: int = 42,
     # Electron charge
-    charge: float = 1.60217663e-19,
+    charge: float = unit_charge,
 ) -> None:
     np.random.seed(seed)
     x = np.linspace(-field_range, field_range, grid_size)

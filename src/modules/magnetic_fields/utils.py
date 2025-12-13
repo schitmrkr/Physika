@@ -1,9 +1,7 @@
 import numpy as np
 from typing import Tuple
 from numpy.typing import NDArray
-
-# Permeability of free space
-mu0 = 4 * np.pi * 1e-7
+from common.constants import mu0
 
 
 def magnetic_field_around_a_straight_wire(

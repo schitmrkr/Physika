@@ -1,8 +1,5 @@
 import numpy as np
-
-# Coulomb's constant
-# Approximately 8.9875517873681764e9 N⋅m^2⋅C^−2
-k: float = 9e9
+from common.constants import k
 
 
 def coulomb_force(q1: float, q2: float, r: float) -> float:
