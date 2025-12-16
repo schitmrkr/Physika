@@ -217,3 +217,79 @@ $$\tan \delta = \frac{\varepsilon''}{\varepsilon'}$$
 ### Circuit Theory - Field Level
 
 **Ohm's law from EM fields**
+
+Circuit law: $V = IR$ or $\mathbf{J} = \sigma \mathbf{E}$ in differnetial form.
+
+Start with current density:
+
+$$
+\mathbf{J} = \sigma \mathbf{E}
+$$
+
+where, $\sigma$ is the conductivity of the material, $\mathbf{E}$ is the electric field and $\mathbf{J}$ is the current density (current per unit area).
+
+Now integrate over conductor's cross-sectional area $A$ to obtain the total current $I$:
+
+$$
+I = \int \mathbf{J} \cdot d\mathbf{A} = \sigma \int \mathbf{E} \cdot d\mathbf{A} = \frac{\sigma \mathbf{A}}{l} V
+$$
+
+Therefore, resistance is given by:
+
+$$
+R = \frac{l}{\sigma A}
+$$
+
+**Capacitor's from Gauss's law**
+
+Circuit law: $Q = CV$.
+
+Consider a parallel plate capacitor:
+
+$$
+Electric \space field \space between \space plates: E = \frac{V}{d}
+$$
+
+where, $V$ is the potential difference between the plates and $d$ is the distance between the plates.
+
+From Gauss's law, surface charge density $\sigma_b$ is:
+
+$$
+\sigma = \varepsilon E
+$$
+
+Total charge:
+
+$$
+Q = \sigma A = \varepsilon E A = \varepsilon \frac{V}{d} A
+$$
+
+Therefore, capacitance is given by:
+
+$$
+C = \frac{Q}{V} = \frac{\varepsilon A}{d}
+$$
+
+**Inductors from Ampere's law**
+
+Circuit law: $V = L \frac{dI}{dt}$ or $LI = \Phi_B$
+
+Consider a coil of wire carrying current $I$. The coil generates magnetic flux $\Phi_B$ through its own turns.
+
+$$
+\Phi_B = \int \mathbf{B} \cdot d\mathbf{A} = \mu N I / l \space (For \space simple \space solenoid)
+$$
+
+Define self inductance:
+
+$$
+L = \frac{\Phi_B}{I}
+$$
+
+Therefore, inductor law naturally follow:
+
+$$
+V = \frac{d\Phi_B}{dt} = L \frac{dI}{dt}
+$$
+
+### RLC Circuits & Resonance
