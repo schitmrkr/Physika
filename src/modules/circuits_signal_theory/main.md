@@ -38,11 +38,45 @@ $$
 \rho_b = -\nabla \cdot \mathbf{P}
 $$
 
-**Electric Displacement Field**
+Proof:
 
 $$
-\mathbf{D} = \varepsilon \mathbf{E}
+P(\vec{r}) = \frac{electric \space dipole \space moment}{unit \space volume}
 $$
+
+At a microscopic level, matter is made up of bound charges, positive and negative charges are slighly displaced and each tiny region behaves like a dipole.
+
+Take a small volume $dV$ inside the dielectric. If the polarization varies with the position, the dipoles inside the volume will not cancel completely, leaving a net _bound charge_ $\rho_b$. If it is uniform then the dipoles cancel each other out and the net bound charge is zero.
+
+Consider all dipoles inside $dV$. Each dipole contributes charge at its ends. What matters is how many dipole moments flow out of the volume. This is exactly the divergence of $\mathbf{P}$.
+
+Mathematically, the net bound charge inside $dV$ is given by:
+
+$$
+Q_b = - \oint_{dV} \mathbf{P} \cdot da
+$$
+
+Minus sign indicates that if dipoles point outwards, negative bound charge is left inside.
+
+Use Gauss's divergence theorem:
+
+$$
+Q_b = - \oint_{dV} \mathbf{P} \cdot da = - \int_{dV} \nabla \cdot \mathbf{P} \space dV
+$$
+
+But by definition:
+
+$$
+Q_b = \int_{dV} \rho_b \space dV
+$$
+
+So,
+
+$$
+\rho_b = -\nabla \cdot \mathbf{P}
+$$
+
+**Electric Displacement Field**
 
 In matter, the electric field responds to all charges (free + bound):
 
@@ -234,6 +268,34 @@ $$
 I = \int \mathbf{J} \cdot d\mathbf{A} = \sigma \int \mathbf{E} \cdot d\mathbf{A} = \frac{\sigma \mathbf{A}}{l} V
 $$
 
+Here the key assumption is of a uniform straight conductor with length $l$ and cross-sectional area $A$. Electric field $\mathbf{E}$ is uniform and parallel to the conductor. Area vector $d\mathbf{A}$ is aligned with $\mathbf{E}$. Thus,
+
+$$
+ \mathbf{E} \cdot d\mathbf{A} = E \space dA
+$$
+
+so,
+
+$$
+\int \mathbf{E} \cdot d\mathbf{A} = \int E \space dA = EA
+$$
+
+Relate electric field to voltage:
+
+$$
+V = \int \mathbf{E} \cdot d\mathbf{l}
+$$
+
+For a uniform field along length $\mathbf{l}$,
+
+$$
+V = El
+$$
+
+$$
+E = \frac{V}{l}
+$$
+
 Therefore, resistance is given by:
 
 $$
@@ -252,10 +314,32 @@ $$
 
 where, $V$ is the potential difference between the plates and $d$ is the distance between the plates.
 
-From Gauss's law, surface charge density $\sigma_b$ is:
+Here the key assumption is of a uniform electric field $\mathbf{E}$ between the plates. The plate area is $A$, plate seperation $d$, filled with dielectric permittivity $\varepsilon$.
+
+For parallel-plate capacitor, the electric field between the plates is uniform and perpendicular to the plates.
+
+Using Gauss's law in matter:
 
 $$
-\sigma = \varepsilon E
+\oint \mathbf{D} \cdot d\mathbf{A} = Q_{free}
+$$
+
+where,
+
+$$
+\mathbf{D} = \varepsilon \mathbf{E}
+$$
+
+For one plate,
+
+$$
+D A = Q_{free}
+$$
+
+So, the free surface charge density on the plate is:
+
+$$
+\sigma_{free} = \frac{Q_{free}}{A} = \varepsilon E
 $$
 
 Total charge:
@@ -274,22 +358,120 @@ $$
 
 Circuit law: $V = L \frac{dI}{dt}$ or $LI = \Phi_B$
 
-Consider a coil of wire carrying current $I$. The coil generates magnetic flux $\Phi_B$ through its own turns.
+When current $I$ flows in a coil, it produces a magnetic field $\mathbf{B}$.
+
+For a simple solenoid,
 
 $$
-\Phi_B = \int \mathbf{B} \cdot d\mathbf{A} = \mu N I / l \space (For \space simple \space solenoid)
+B = \mu \frac{NI}{l}
 $$
 
-Define self inductance:
+where, $\mu$ is the permeability of the material, $N$ is the number of turns, $I$ is the current and $l$ is the length of the coil. The key idea:
+
+$$
+B \propto I
+$$
+
+Magnetic field creates magnetic flux (Flux is a measure of how much of something passes through a surface). Magnetic flux through one turn:
+
+$$
+\Phi_B = \int \mathbf{B} \cdot d\mathbf{A} = BA
+$$
+
+For N turns,
+
+$$
+\Phi_B = NBA
+$$
+
+Substitute B:
+
+$$
+\Phi_B = N (\mu \frac{NI}{l}) A  = \mu \frac{N^2A}{l} I
+$$
+
+Since, flux is directly proportional to current, we define inductance $L$ as:
 
 $$
 L = \frac{\Phi_B}{I}
 $$
 
-Therefore, inductor law naturally follow:
+So,
 
 $$
-V = \frac{d\Phi_B}{dt} = L \frac{dI}{dt}
+\Phi_B = LI
+$$
+
+This is not a law yet, it is a definition.
+
+Change in current creates change in flux. If current varies with time:
+
+$$
+\Phi_B(t) = LI(t)
+$$
+
+Take time derivate:
+
+$$
+\frac{d\Phi_B(t)}{dt} = L\frac{dI(t)}{dt}
+$$
+
+Change in flux produces voltage (Faraday's law):
+
+$$
+V = -\frac{d\Phi_B(t)}{dt}
+$$
+
+Ignoring sign (depends on chosen polarity):
+
+$$
+V = L \frac{dI(t)}{dt}
 $$
 
 ### RLC Circuits & Resonance
+
+A circuit with resistor, capacitor and inductor is called an RLC circuit and has a natural oscillation:
+
+$$
+\omega_0 = \frac{1}{\sqrt{LC}}
+$$
+
+A circuit has natural oscillation if you distrub it once, it keeps exchanging energy on its own. No external power is needed (ideal case).
+
+Resistors only remove energy, they do not contribute to oscillation. Capacitors and Inductors keeps energy moving back and forth.
+
+Capacitors store energy in electric field. Inductors store energy in magnetic field.
+
+$$
+U_C = \frac{1}{2}CV^2
+$$
+
+$$
+U_L = \frac{1}{2}LI^2
+$$
+
+For an ideal LC circuits (no resistors), using Kirchoff's voltage law, we get:
+
+$$
+V_L + V_C = 0
+$$
+
+Substitute $V_L$ and $V_C$:
+
+$$
+L \frac{dI(t)}{dt} + \frac{Q}{C}  = 0
+$$
+
+$$
+\frac{d^2Q(t)}{dt^2} + \frac{Q(t)}{LC} = 0
+$$
+
+This is exactly the same equation as mass-spring system, pendulum or any harmonic oscillator. The natural frequency is given by:
+
+$$
+\omega_0 = \frac{1}{\sqrt{LC}}
+$$
+
+Add resistance and you get damping factor.
+
+### Transmission Lines
