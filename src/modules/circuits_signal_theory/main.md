@@ -475,3 +475,7 @@ $$
 Add resistance and you get damping factor.
 
 ### Transmission Lines
+
+Impedance matching is a key concept in transmission lines. It is the process of matching the impedance of a source to the impedance of a load to minimize reflection and maximize power transfer.
+
+Project: Build a CMOS inverter and fully analyze its delay, capacitance, and power.
