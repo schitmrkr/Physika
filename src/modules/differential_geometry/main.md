@@ -80,10 +80,7 @@ Hence, $\frac{d\mathbf{b}}{ds}$ is perpendicular to $\mathbf{t}$ and $\mathbf{b}
 Consequently,
 
 $$
-
 \frac{d\mathbf{b}}{ds} = \tau \mathbf{n}
-
-
 $$
 
 where $\tau$ is the torsion of the curve.
@@ -91,47 +88,29 @@ where $\tau$ is the torsion of the curve.
 Finally, to obtain $\frac{d\mathbf{n}}{ds}$, we use the fact that $\mathbf{n} = \mathbf{b} \times \mathbf{t}$, so:
 
 $$
-
 \frac{d\mathbf{n}}{ds} = \frac{d}{ds}(\mathbf{b} \times \mathbf{t}) = \frac{d\mathbf{b}}{ds} \times \mathbf{t} + \mathbf{b} \times \frac{d\mathbf{t}}{ds}
-
-
 $$
 
 $$
-
 \frac{d\mathbf{n}}{ds} = \mathbf{b} \times \kappa \mathbf{n} + \tau \mathbf{n} \times \mathbf{t}
-
-
 $$
 
 $$
-
 \frac{d\mathbf{n}}{ds} = -\kappa \mathbf{t} - \tau \mathbf{b}
-
-
 $$
 
 The famouse Frenet-Serret Formulas are:
 
 $$
-
 \frac{d\mathbf{t}}{ds} = \kappa \mathbf{n}
-
-
 $$
 
 $$
-
 \frac{d\mathbf{n}}{ds} = -\kappa \mathbf{t} - \tau \mathbf{b}
-
-
 $$
 
 $$
-
 \frac{d\mathbf{b}}{ds} = \tau \mathbf{n}
-
-
 $$
 
 ### Fundamental Planes
@@ -139,10 +118,7 @@ $$
 The plane containing then tangent and the principle normal is called the osculating plane. The equation of the osculating plane is:
 
 $$
-
 (\mathbf{s}-\mathbf{r}) \cdot \mathbf{b} = 0
-
-
 $$
 
 where, $\mathbf{s}$ is the variable vector to any point in the plane and $\mathbf{r}$ is the vector to the point P on the curve.
@@ -150,15 +126,9 @@ where, $\mathbf{s}$ is the variable vector to any point in the plane and $\mathb
 Similarly,
 
 $$
-
 (\mathbf{s}-\mathbf{r}) \cdot \mathbf{t} = 0
-
-
 $$
 
 $$
-
 (\mathbf{s}-\mathbf{r}) \cdot \mathbf{n} = 0
-
-
 $$
