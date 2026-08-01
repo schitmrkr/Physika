@@ -197,7 +197,7 @@ The names **contravariant** and **covariant** describe how the components of a v
 A contravariant vector transforms with the **forward Jacobian** of the coordinate transformation:
 
 $$
-\bar{A}^{\,i}
+\bar{A}^{i}
 =
 \frac{\partial \bar{x}^{\,i}}{\partial x^\alpha}
 A^\alpha
@@ -229,7 +229,7 @@ which matches the contravariant transformation law.
 A covariant vector transforms with the **inverse Jacobian**:
 
 $$
-\bar{A}_{\,i}
+\bar{A}_{i}
 =
 A_\alpha
 \frac{\partial x^\alpha}{\partial \bar{x}^{\,i}}
@@ -262,7 +262,7 @@ The contraction of one contravariant and one covariant vector is invariant under
 $$
 A^\alpha B_\alpha
 =
-\bar{A}^{\,\alpha}\bar{B}_{\,\alpha},
+\bar{A}^{\alpha}\bar{B}_{\alpha},
 $$
 
 because the Jacobian and its inverse cancel via the chain rule:
