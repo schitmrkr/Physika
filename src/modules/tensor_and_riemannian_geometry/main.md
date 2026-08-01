@@ -225,10 +225,7 @@ which matches the contravariant transformation law.
 A covariant vector transforms with the **inverse Jacobian**:
 
 $$
-\bar{A}_{i}
-=
-A_\alpha
-\frac{\partial x^\alpha}{\partial \bar{x}^{\,i}}
+\bar{A}_{i} = A_\alpha \frac{\partial x^\alpha}{\partial \bar{x}^{i}}
 $$
 
 The gradient of a scalar field,
@@ -240,10 +237,7 @@ $$
 is the canonical example. Applying the chain rule,
 
 $$
-\frac{\partial\phi}{\partial\bar{x}^i}
-=
-\frac{\partial\phi}{\partial x^\alpha}
-\frac{\partial x^\alpha}{\partial\bar{x}^i},
+\frac{\partial\phi}{\partial\bar{x}^i} = \frac{\partial\phi}{\partial x^\alpha} \frac{\partial x^\alpha}{\partial\bar{x}^i},
 $$
 
 shows that gradients obey the covariant transformation law.
@@ -256,16 +250,11 @@ shows that gradients obey the covariant transformation law.
 The contraction of one contravariant and one covariant vector is invariant under coordinate transformations:
 
 $$
-A^\alpha B_\alpha
-=
-\bar{A}^{\alpha}\bar{B}_{\alpha},
+A^\alpha B_\alpha = \bar{A}^{\alpha}\bar{B}_{\alpha},
 $$
 
 because the Jacobian and its inverse cancel via the chain rule:
 
 $$
-\frac{\partial x^\alpha}{\partial \bar{x}^\beta}
-\frac{\partial \bar{x}^\sigma}{\partial x^\alpha}
-=
-\delta^\sigma_\beta.
+\frac{\partial x^\alpha}{\partial \bar{x}^\beta} \frac{\partial \bar{x}^\sigma}{\partial x^\alpha} = \delta^\sigma_\beta.
 $$
