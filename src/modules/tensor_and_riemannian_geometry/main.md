@@ -197,7 +197,7 @@ The names **contravariant** and **covariant** describe how the components of a v
 A contravariant vector transforms with the **forward Jacobian** of the coordinate transformation:
 
 $$
-\bar{A}^{i} = \frac{\partial \bar{x}^{\,i}}{\partial x^\alpha} A^\alpha
+\bar{A}^i = \frac{\partial \bar{x}^i}{\partial x^\alpha} A^\alpha
 $$
 
 A tangent vector to a curve,
@@ -207,16 +207,15 @@ A^i = \frac{dx^i}{dt},
 $$
 
 is the canonical example. Since the coordinates transform as
+
 $$
 \bar{x}^i=\bar{x}^i(x),
 $$
+
 the chain rule gives
 
 $$
-\frac{d\bar{x}^i}{dt}
-=
-\frac{\partial \bar{x}^i}{\partial x^\alpha}
-\frac{dx^\alpha}{dt},
+\frac{d\bar{x}^i}{dt} = \frac{\partial \bar{x}^i}{\partial x^\alpha} \frac{dx^\alpha}{dt},
 $$
 
 which matches the contravariant transformation law.
