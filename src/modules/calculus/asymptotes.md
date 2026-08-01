@@ -155,6 +155,8 @@ $$
 F_n(x,y) = 0
 $$
 
+Why? Because for the curve to approach the asymptote at infinity, the highest degree terms must approach zero when x tends to infinity.
+
 Then we can find the asymptotes by sustitituting $y = mx$,
 
 Divide the entire equation by highest power of x, then take the limit $x \to \infty$
