@@ -197,10 +197,7 @@ The names **contravariant** and **covariant** describe how the components of a v
 A contravariant vector transforms with the **forward Jacobian** of the coordinate transformation:
 
 $$
-\bar{A}^{i}
-=
-\frac{\partial \bar{x}^{\,i}}{\partial x^\alpha}
-A^\alpha
+\bar{A}^{i} = \frac{\partial \bar{x}^{\,i}}{\partial x^\alpha} A^\alpha
 $$
 
 A tangent vector to a curve,
