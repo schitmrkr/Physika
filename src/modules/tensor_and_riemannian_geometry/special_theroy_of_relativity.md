@@ -210,6 +210,157 @@ $$
 
 Notes:
 
+This derivation shows how relativistic kinetic energy is obtained from the work-energy theorem. Here the mass is treated as velocity dependent.
+
+$$
+m = \gamma m_0, \space \gamma = \frac{1}{\sqrt{1-u^2/c^2}}
+$$
+
+Newtonian force is written as:
+
+$$
+F^\alpha = \frac{d}{dt} (m \frac{dx^\alpha}{dt})
+$$
+
+Here m changes with velocity. 
+
+Work done is 
+
+$$
+dE = \mathbf{F} \cdot d\mathbf{x}
 $$
 
 $$
+dE = \sum_{\alpha=1}^3 F^\alpha dx^\alpha = \sum_{\alpha=1}^3 \frac{d}{dt} (m \dot{x}^\alpha) dx^\alpha
+$$
+
+Now, differentiating the momentum
+
+$$
+\frac{d}{dt} (m \dot{x}^\alpha) = m \ddot{x}^\alpha + \frac{dm}{dt} \dot{x}^\alpha
+$$
+
+Therefore,
+
+$$
+dE = \sum_{\alpha=1}^3 \frac{d}{dt} (m \ddot{x}^\alpha + \frac{dm}{dt} \dot{x}^\alpha) dx^\alpha
+$$
+
+Since $dx^\alpha = \dot{x}^\alpha dt$, we get
+
+$$
+dE = \sum_{\alpha=1}^3  (m \ddot{x}^\alpha \dot{x}^\alpha + \frac{dm}{dt} (\dot{x}^\alpha)^{2}) dt
+$$
+
+Now simplify each term
+
+$$
+\sum_\alpha \ddot{x}^\alpha \dot{x}^\alpha = \mathbf{a} \cdot \mathbf{u}
+$$
+
+Now using 
+
+$$
+u^2 = \mathbf{u} \cdot \mathbf{u} \\
+\frac{du^2}{dt} = 2 \mathbf{u} \cdot\mathbf{a} \\
+\mathbf{u} \cdot\mathbf{a} = u \frac{du}{dt}
+$$
+
+Also,
+
+$$
+\sum_\alpha(\dot{x}^\alpha)^2 = u^2
+$$
+
+Therefore,
+
+$$
+dE = (mu \frac{du}{dt} + \frac{dm}{dt} u^2)dt \\
+$$
+
+$$
+dE = m u du + dm u^2
+$$
+
+Now to compute $dm$,
+
+$$
+m = \gamma m_0  \\
+dm = m_0 d\gamma  \\
+$$
+
+$$
+\gamma = (1-(u^2/c^2))^{-1/2}
+$$
+
+So,
+
+$$
+\frac{d\gamma}{du} = \frac{\gamma^3 u}{c^2}
+$$
+
+Thus,
+$$
+dm = m_0 \frac{\gamma^3 u}{c^2} du
+$$
+
+Substitute into,
+
+$$
+dE = m u du + u^2 dm
+$$
+
+$$
+dE = \gamma m_0 u du + m_0 \gamma^3 \frac{u^3}{c^2} du
+$$
+
+$$
+dE =  m_0 u du (\gamma + \gamma^2 \frac{u^2}{c^2})
+$$
+
+Using identity:
+
+$$
+\gamma + \gamma^3 \beta^2 = \gamma^3, \space \beta = \frac{u}{c}
+$$
+
+Therefore,
+
+$$
+dE = m_0 \gamma^3 u du = \frac{m_0 u du}{(1-\frac{u^2}{c^2})^{3/2}}
+$$
+
+Integrating we get,
+
+$$
+E = \int_0^u \frac{m_0 u du}{(1-\frac{u^2}{c^2})^{3/2}}
+$$
+
+A convinient substitution,
+
+$$
+w = 1 - \frac{u^2}{c^2}
+$$
+
+$$
+dw =  - \frac{2u}{c^2}du
+$$
+
+After integration,
+
+$$
+E = m_0 c^2 (\gamma - 1)
+$$
+
+$$
+E = (m - m_0)c^2 
+$$
+
+This is the kinetic energy. Thus, we can see that
+
+$$
+K = TE - RE, \space TE = \gamma m_0 c^2, \space RE = m_0 c^2
+$$
+
+
+
