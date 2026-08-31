@@ -45,3 +45,8 @@ $$
 \bar{A} = {\left| \frac{\partial x}{\partial \bar{x}} \right|}^N A
 $$
 
+so that,
+
+$$
+\frac{\partial \bar{A}}{\partial \bar{x}^j} = \left| \frac{\partial x}{\partial \bar{x}} \right|^N \frac{\partial A}{\partial x^\alpha} \frac{\partial x^\alpha}{\partial \bar{x}^j} + N \left| \frac{\partial x}{\partial \bar{x}} \right|^{N-1} \frac{\frac{\partial x}{\partial \bar{x}}}{\partial \bar{x}^j} A
+$$
