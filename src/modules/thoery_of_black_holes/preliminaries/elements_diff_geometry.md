@@ -23,3 +23,14 @@ $$
 
 suffices to complete the definition of $M \times N$ as a manifold of $(m+n)$-dimensions.
 
+We now consider a function $f$ on $M$ defined by a map $f: M \rightarrow \mathcal{R}^1$. Suppose, a map $f \sdot \phi_\alpha^{-1}$ images a point $(x^1, .., x^n)$ in $\mathcal{R}^n$ on to the reals, $\mathcal{R}^1$, is a smooth function. We define a smooth curve $\lambda$ on $M$ by the map
+
+$$
+\lambda: I(a \lt t \lt b) \space in \space \mathcal{R}^1 \rightarrow \lambda(t) = p \in M
+$$
+
+such that
+
+$$
+(\phi_\alpha \sdot \lambda)(t) = [x^1(t), .., x^n(t)] 
+$$
