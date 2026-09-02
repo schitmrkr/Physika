@@ -1,0 +1,140 @@
+### Time independent schrodingers equation
+
+$$
+i \hbar \frac{\partial \Psi}{\partial t} = - \frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V \Psi
+$$
+
+We assume that the solution look like
+
+$$
+\Psi(x,t) = \psi(x)\phi(t)
+$$
+
+Now the schrodinger's equation reads
+
+$$
+i \hbar \psi \frac{\partial \phi}{\partial t} = - \frac{\hbar^2}{2m}  \frac{\partial^2 \psi}{\partial x^2} \phi + V \psi \phi
+$$
+
+Dividing both sides by $\psi \phi$, we get
+
+$$
+i \hbar \frac{1}{\phi} \frac{\partial \phi}{\partial t} = - \frac{\hbar^2}{2m} \frac{1}{\psi} \frac{\partial^2 \psi}{\partial x^2} + V
+$$
+
+Now the left side is a function of $t$ alone and right side is a function $x$ alone. Thus, they must be constants. We let $E$ be that constant.
+
+$$
+i \hbar \frac{1}{\phi} \frac{\partial \phi}{\partial t} = E
+$$
+
+and 
+
+$$
+- \frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} \psi + V \psi = E \psi
+$$
+
+The first time equation has general soultion of form
+
+$$
+\phi = e^{-iEt/\hbar}
+$$
+
+And the second space equation is called the time independent Schrodinger's equation.
+
+These are stationary states. The wave function itself has the form 
+
+$$
+\Psi(x, t) = \psi(x) e^{-iEt/\hbar}
+$$
+
+The probability density is completely dependent on $\psi$,
+
+$$
+|\Psi|^2 =  \Psi^* \Psi = \psi^* e^{+iEt/\hbar} \psi e^{-iEt/\hbar} = \psi^* \psi = |\psi|^2
+$$
+
+Same is true for any dynamical variable
+
+$$
+\langle Q(x, p) \rangle = \int \psi^* [Q(x, -i \hbar \frac{d}{dx})] \psi dx
+$$
+
+They are states of definite total eneery. The total energy is called the **Hamiltonian** in classical mechanics.
+
+$$
+H(x, p) = \frac{p^2}{2m} + V(x)
+$$
+
+The corresponding hamiltonian operator can be obtained
+
+$$
+\hat{H} = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+$$
+
+Thus the time independent scrodingers equation can be written as 
+
+$$
+\hat{H} \psi = E \psi
+$$
+
+Thus the expectation value of total energy is 
+
+$$
+\langle E \rangle = \int \psi^* \hat{H} \psi dx = E \int |\psi|^2 dx = E
+$$
+
+The variance of $\hat{H}$ is 0.
+
+
+#### The infinite square well
+
+Suppose,
+
+$$
+V(x) = \begin{cases}
+0, & 0 \le x \le a,\\
+\infin, & otherwise\\
+\end{cases}
+$$
+
+Outside the well, $\psi(x)=0$. Inside the well we have
+
+$$
+- \frac{\hbar^2}{2m} \frac{\partial^2\psi}{\partial x^2} = E \psi
+$$
+
+or 
+
+$$
+\frac{\partial^2\psi}{\partial x^2} = - k^2 \psi, \space k = \frac{\sqrt{2mE}}{\hbar} 
+$$
+
+The general solution for this equation is 
+
+$$
+\psi(x) = A \sin kx + B \cos kx
+$$
+
+Solving using boundary conditions, we get
+
+$$
+E_n = \frac{\hbar^2 k^2}{2m} = \frac{n^2 \pi^2 \hbar^2}{2ma^2}
+$$
+
+
+#### The harmonic oscillator
+
+The quantum problem is to solve Schrodinger's equation for potential
+
+$$
+V(x) = \frac{1}{2} m \omega^2 x^2
+$$
+
+Thus the time independent schrodinger's equation becomes
+
+$$
+- \frac{\hbar^2}{2m} \frac{\partial^2 \psi}{\partial x^2} + \frac{1}{2} m \omega^2 x^2 \psi = E \psi
+$$
+
+
