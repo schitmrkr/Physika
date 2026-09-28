@@ -142,6 +142,26 @@ T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots j_q ;k} = \frac{\partial T^{i_1 i_2 \cdot
 - \Gamma^{\alpha}_{j_1 k} T^{i_1 \cdots i_p}_{\alpha .. j_q} - \Gamma^{\alpha}_{j_q k} T^{i_1 \cdots i_p}_{j_1 \cdots \alpha}
 $$
 
+$$
+\begin{aligned}
+T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots j_q;k}
+&=
+\frac{\partial T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots j_q}}
+{\partial x^k}
++ \Gamma^{i_1}_{\alpha k}
+T^{\alpha i_2 \cdots i_p}_{j_1 j_2 \cdots j_q}
++ \cdots
++ \Gamma^{i_p}_{\alpha k}
+T^{i_1 i_2 \cdots \alpha}_{j_1 j_2 \cdots j_q} \\
+&\quad
+- \Gamma^\alpha_{j_1 k}
+T^{i_1 i_2 \cdots i_p}_{\alpha j_2 \cdots j_q}
+- \cdots
+- \Gamma^\alpha_{j_q k}
+T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots \alpha}.
+\end{aligned}
+$$
+
 ***
 
 **General intuition for cuvature tensor**
