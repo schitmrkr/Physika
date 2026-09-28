@@ -138,11 +138,6 @@ $$
 Suppose you have $T^{i_1 i_2 .. i_p}_{j_1 j_2 .. j_q}$, its covariant derivative is 
 
 $$
-T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots j_q ;k} = \frac{\partial T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots j_q}}{\partial x^k} + \Gamma^{i_1}_{\alpha k} T^{\alpha i_2 \cdots i_p}_{j_1 j_2 \cdots j_q} + \cdots + \Gamma^{i_q}_{\alpha k} T^{i_1 i_2 \cdots \alpha}_{j_1 j_2 \cdots j_q} \\
-- \Gamma^{\alpha}_{j_1 k} T^{i_1 \cdots i_p}_{\alpha .. j_q} - \Gamma^{\alpha}_{j_q k} T^{i_1 \cdots i_p}_{j_1 \cdots \alpha}
-$$
-
-$$
 \begin{aligned}
 T^{i_1 i_2 \cdots i_p}_{j_1 j_2 \cdots j_q;k}
 &=
