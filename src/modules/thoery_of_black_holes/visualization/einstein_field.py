@@ -1,2 +1,0 @@
-# Use Manim For Visualization
-

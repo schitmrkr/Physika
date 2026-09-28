@@ -111,4 +111,3 @@ $$
 
 This is a simple application of Leibniz theorem.
 
-### Practice Problems
