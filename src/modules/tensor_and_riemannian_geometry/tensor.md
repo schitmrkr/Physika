@@ -155,6 +155,7 @@ $$
 $$
 
 Similarly,
+
 $$
 \bar{g}_{22} = (y^1)^2, \space 
 \bar{g}_{33} = (y^1)^2(\sin y^2)^2, \space 
