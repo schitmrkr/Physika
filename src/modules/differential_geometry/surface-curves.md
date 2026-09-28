@@ -98,4 +98,3 @@ $$
 \mathbf{n} = \frac{(\frac{\partial \mathbf{r}}{\partial u}) \times (\frac{\partial \mathbf{r}}{\partial v})}{\left| (\frac{\partial \mathbf{r}}{\partial u}) \times (\frac{\partial \mathbf{r}}{\partial v}) \right|}
 $$
 
-### The second fundamental form

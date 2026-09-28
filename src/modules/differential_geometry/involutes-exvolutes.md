@@ -64,7 +64,7 @@ $$
 
 ### Evolutes
 
-Evolutes are inverse concept of involutes. It is a curve $\Tau'$ whose tangents are perpendicular to a given curve. The tangent to $\Tau'$ must lie in the plane of $\mathbf{b}$ and $\mathbf{n}$ of $\Tau$, since it is perpendicular to $\mathbf{t}$.
+Evolutes are inverse concept of involutes. It is a curve $T'$ whose tangents are perpendicular to a given curve. The tangent to $T'$ must lie in the plane of $\mathbf{b}$ and $\mathbf{n}$ of $T$, since it is perpendicular to $\mathbf{t}$.
 
 $$
 \mathbf{r_e} = \mathbf{r} + u\mathbf{n} + v\mathbf{b}
