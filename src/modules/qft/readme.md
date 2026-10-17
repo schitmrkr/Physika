@@ -1,0 +1,3 @@
+Quantum mechanics is pre-information. The uncertainty is lack of information. 
+
+When I ask you where does a photon go, quantum mechanical answer is that it is a wave that propagates. But it is also a particle so while as a wave it can propagate in all direction, in reality it can only go in one direction. The Schrodinger's wave function is interpreted as probability distribution given by the amplititude of the wave at that point. 
