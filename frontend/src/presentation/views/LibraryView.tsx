@@ -48,19 +48,31 @@ export const LibraryView = () => {
 
   return (
     <div className="page library">
-      <header className="page-head">
-        <div>
-          <p className="eyebrow">
-            <span className="eyebrow__rule" />
-            Archive · {state.studies.length} studies
-          </p>
-          <h1>The study library.</h1>
-          <p className="page-head__lede">
-            Every study, filed by field and held in one quiet index. Search the full text, follow a
-            thread, or return to something unfinished.
-          </p>
-        </div>
-      </header>
+      <div className="field-chips" aria-label="Filter by field">
+        <button
+          type="button"
+          className={`field-chip ${state.subjectId === null ? 'is-active' : ''}`}
+          onClick={() => chooseSubject(null)}
+        >
+          All fields
+          <span>{state.studies.length}</span>
+        </button>
+        {state.readings.map((reading) => (
+          <button
+            key={reading.subject.id}
+            type="button"
+            className={`field-chip ${state.subjectId === reading.subject.id ? 'is-active' : ''} ${
+              reading.count === 0 ? 'is-dim' : ''
+            }`}
+            style={{ '--subject': reading.subject.accent } as CSSProperties}
+            onClick={() => chooseSubject(reading.subject.id)}
+          >
+            <i className="field-chip__dot" />
+            {reading.subject.shortName}
+            <span>{reading.count}</span>
+          </button>
+        ))}
+      </div>
 
       {activeReading && (
         <section
@@ -94,32 +106,6 @@ export const LibraryView = () => {
           </button>
         </section>
       )}
-
-      <div className="field-chips" aria-label="Filter by field">
-        <button
-          type="button"
-          className={`field-chip ${state.subjectId === null ? 'is-active' : ''}`}
-          onClick={() => chooseSubject(null)}
-        >
-          All fields
-          <span>{state.studies.length}</span>
-        </button>
-        {state.readings.map((reading) => (
-          <button
-            key={reading.subject.id}
-            type="button"
-            className={`field-chip ${state.subjectId === reading.subject.id ? 'is-active' : ''} ${
-              reading.count === 0 ? 'is-dim' : ''
-            }`}
-            style={{ '--subject': reading.subject.accent } as CSSProperties}
-            onClick={() => chooseSubject(reading.subject.id)}
-          >
-            <i className="field-chip__dot" />
-            {reading.subject.shortName}
-            <span>{reading.count}</span>
-          </button>
-        ))}
-      </div>
 
       <div className="library-toolbar">
         <label className="search-box">

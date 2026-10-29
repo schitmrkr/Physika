@@ -1,6 +1,6 @@
-import { useEffect, useMemo, type CSSProperties } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { ChevronRight, LibraryBig } from 'lucide-react';
+import { ChevronRight, LibraryBig, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { useContainer } from './AppProviders';
 import { useViewModel } from '../presentation/core/useViewModel';
 import { ShellViewModel } from '../presentation/viewmodels/ShellViewModel';
@@ -16,10 +16,18 @@ const NAV_ITEMS = [
   { to: '/vault', label: 'Study library', index: '01', icon: LibraryBig, end: false },
 ];
 
+const SIDEBAR_STORAGE_KEY = 'physika.sidebar.collapsed';
+
 export const AppShell = () => {
   const container = useContainer();
   const location = useLocation();
   const vm = useViewModel(() => new ShellViewModel(container.studies), [container]);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    return window.localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'true';
+  });
 
   const state = vm.getState();
   const sectionLabel =
@@ -35,8 +43,12 @@ export const AppShell = () => {
     scroller?.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
 
+  useEffect(() => {
+    window.localStorage.setItem(SIDEBAR_STORAGE_KEY, String(sidebarCollapsed));
+  }, [sidebarCollapsed]);
+
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${sidebarCollapsed ? 'is-sidebar-collapsed' : ''}`}>
       <aside className="sidebar">
         <Link to="/vault" className="brand" aria-label="Physika study library">
           <span className="brand__mark">
@@ -56,6 +68,7 @@ export const AppShell = () => {
                 key={item.to}
                 to={item.to}
                 end={item.end}
+                title={item.label}
                 className={({ isActive }) => `nav-item ${isActive ? 'is-active' : ''}`}
               >
                 <Icon size={17} strokeWidth={1.8} />
@@ -81,6 +94,7 @@ export const AppShell = () => {
                 <Link
                   key={reading.subject.id}
                   to={`/vault?subject=${reading.subject.id}`}
+                  title={reading.subject.name}
                   className={`field-rail__item ${isActive ? 'is-active' : ''} ${reading.count === 0 ? 'is-dim' : ''}`}
                   style={{ '--subject': reading.subject.accent } as CSSProperties}
                 >
@@ -98,7 +112,6 @@ export const AppShell = () => {
             <span className="local-status__dot" />
             <span>
               <strong>{state.total} entries indexed</strong>
-              <small>Local browser vault · no server</small>
             </span>
           </div>
         </div>
@@ -106,10 +119,26 @@ export const AppShell = () => {
 
       <main className="workspace">
         <header className="topbar">
-          <div className="topbar__crumb">
-            <span>Physika</span>
-            <ChevronRight size={13} />
-            <strong>{sectionLabel}</strong>
+          <div className="topbar__lead">
+            <button
+              type="button"
+              className="sidebar-toggle"
+              onClick={() => setSidebarCollapsed((collapsed) => !collapsed)}
+              aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              aria-expanded={!sidebarCollapsed}
+              title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
+              {sidebarCollapsed ? (
+                <PanelLeftOpen size={17} strokeWidth={1.8} />
+              ) : (
+                <PanelLeftClose size={17} strokeWidth={1.8} />
+              )}
+            </button>
+            <div className="topbar__crumb">
+              <span>Physika</span>
+              <ChevronRight size={13} />
+              <strong>{sectionLabel}</strong>
+            </div>
           </div>
         </header>
 

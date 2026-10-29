@@ -1,0 +1,244 @@
+### Group $U(1)$
+
+Complex numbers can be written in polar form
+
+$$
+z = r e^{i \theta}
+$$
+
+$$
+e^{i \theta} = \cos \theta + i \sin \theta
+$$
+
+For a complex field $\psi(x)$, the transformation
+
+$$
+\psi'(x) = e^{i \alpha} \psi(x)
+$$
+
+rotates the complex value of the field at every spacetime point.
+
+If $\alpha$ is constant, every point receives the same rotation. If $\alpha=\alpha(x)$, the rotation can vary from point to point.
+
+### Why do these transformation form a group?
+
+A group is a set of elements equipped with a composition operation satisfying four properties.
+
+Consider the set 
+
+$$
+U(1) = \{ e^{i \alpha} | \alpha \in \mathbb{R} \}
+$$
+
+This is the set of all complex numbers with unit magnitude. The operation is ordinary complex multiplication.
+
+**Property 1: Closure**
+
+If we perform two phase transformations,
+
+$$
+g_1 = e^{i \alpha}, \qquad g_2 = e^{i \beta}
+$$
+
+their product is
+
+$$
+g_2 g_1 = e^{i (\beta + \alpha)}
+$$
+
+The result is another element of $U(1)$.
+
+**Property 2: Identity**
+
+Choose $\alpha = 0$, Then,
+
+$$
+e^{i0} = 1
+$$
+
+$$
+1 \cdot \psi = \psi
+$$
+
+The identity element is $e^{i0}=1$.
+
+**Property 3: Inverse**
+
+For every transformation $e^{i \alpha}$, we can undo it with $e^{-i \alpha}$,
+
+$$
+e^{-i \alpha} e^{i \alpha} = 1
+$$
+
+Every transformation has an inverse.
+
+**Property 4: Associativity**
+
+Complex multiplication satisfies
+
+$$
+(g_1 g_2) g_3 = g_1 (g_2 g_3)
+$$
+
+$$
+\boxed{\text{U(1) is a group under complex multiplication.}}
+$$
+
+### What does notation $U(1)$ actually mean?
+
+The notation is compact. $U$ stands for unitary and $1$ means the matrices are $1 \times 1$.
+
+A matrix is unitary when 
+
+$$
+U^\dagger U = I
+$$
+
+where $U^\dagger$ is the conjugate transpose and $I$ is the identity matrix.
+
+For a $1 \times 1$ matrix, the matrix is simply a complex number. 
+
+$$
+U^\dagger U = e^{-i \alpha} e^{i \alpha} = 1
+$$
+
+Thus, $U(1)$ is precisely the group of $1\times1$ unitary matrices. The phase angle is not unique because
+
+$$
+e^{i (\alpha + 2\pi)} = e^{i \alpha}
+$$
+
+So $U(1)$ is not the real line of all angles with no identifications. Geometrically, it is a circle.
+
+### How does $U(1)$ act on a field?
+
+A group is an abstract collection of transformations. For a complex scalar field, the rule is simply
+
+$$
+\boxed{\psi(x) \longrightarrow U \psi(x), \qquad U = e^{i \alpha}.}
+$$
+
+This is the simplest example of a group representation.
+
+For our complex scalar field, the vector space is one-dimensional over the complex numbers, and each group element acts by multiplication.
+
+For example, an $SU(2)$ transformation can act on a two-component complex field,
+
+$$
+\Psi(x) = \begin{pmatrix}
+\psi_1(x) \\
+\psi_2(x)
+\end{pmatrix}, \qquad \Psi(x) \to U(x) \Psi(x)
+$$
+
+where $U(x)$ is a $2 \times 2$ unitary matrix with determinant $1$.
+
+
+### Infinitesimal transformations
+
+A powerful strategy in mathematical physics is to first understand transformations that are very small.
+
+Suppose $\epsilon$ is a small real number. An infinitesimal $U(1)$ transformation is
+
+$$
+\psi'(x) = e^{i \epsilon} \psi(x)
+$$
+
+Using the Taylor expansion of the exponential,
+
+$$
+e^{i \epsilon} = 1 + i \epsilon + O(\epsilon^2)
+$$
+
+we obtain, to first order,
+
+$$
+\psi' = (1 + i \epsilon) \psi
+$$
+
+Hence,
+
+$$
+\delta \psi = \psi' - \psi = i \epsilon \psi
+$$
+
+This equation is important. It tells us how the field changes under an infinitesimal phase rotation.
+
+Instead of working with a full exponential, we can now calculate how the field and the Lagrangian change to first order in $\epsilon$.
+
+**Introducing the generator**
+
+Write the infinitesimal transformation in the form
+
+$$
+\psi' = (1 + i \epsilon Q) \psi
+$$
+
+where $Q$ is the generator of the transformation.
+
+For a scalar field of unit $U(1)$ charge in this convention,
+
+$$
+Q = 1
+$$
+
+For a field with charge $q$, we can instead write
+
+$$
+\psi' = (1 + i \epsilon q) \psi + O(\epsilon^2)
+$$
+
+The corresponding finite transformation is
+
+$$
+\psi' = e^{iq\alpha} \psi
+$$
+
+Here $q$ determines how strongly the field's phase responds to the group parameter.
+
+### Why infinitesimal transformations are useful?
+
+For a global transformation, $\epsilon$ is constant:
+
+$$
+\delta \psi = i q \epsilon \psi
+$$
+
+Taking a derivative gives
+
+$$
+\delta (\partial_\mu \psi) = i q \epsilon \partial_\mu \psi
+$$
+
+The derivative transforms in the same way as the field.
+
+But suppose the parameter becomes position-dependent:
+
+$$
+\epsilon \longrightarrow \epsilon(x)
+$$
+
+Now
+
+$$
+\delta \psi(x) = i q \epsilon(x) \psi(x)
+$$
+
+Differentiating this expression and applying the product rule gives
+
+$$
+\delta (\partial_\mu \psi) = i q \epsilon (\partial_\mu \psi) + i q (\partial_\mu \epsilon) \psi 
+$$
+
+The extra term is 
+
+$$
+i q (\partial_\mu \epsilon) \psi 
+$$
+
+This is the infinitesimal version of the problem that motivates the gauge field.
+
+**Global symmetry**: A constant phase transformation can be a genuine symmetry of the matter-field theory. By Noether's theorem, a continuous global symmetry leads to a conserved current under the usual assumptions.
+
+**Local gauge symmetry**: A spacetime-dependent transformation changes the local mathematical description. In a gauge theory, the matter and gauge fields transform together so that the action remains invariant. This local freedom is generally understood as a redundancy in the description, rather than an independent physical transformation.
+

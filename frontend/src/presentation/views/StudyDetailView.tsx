@@ -81,7 +81,6 @@ export const StudyDetailView = () => {
           <span>{formatLabel(study.format)}</span>
         </div>
         <h1>{study.title}</h1>
-        {study.abstract && <p className="note-head__lede">{study.abstract}</p>}
 
         <div className="note-head__foot">
           <div className="note-metrics">

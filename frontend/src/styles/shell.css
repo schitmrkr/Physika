@@ -3,6 +3,11 @@
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   min-height: 100vh;
   background: var(--paper);
+  transition: grid-template-columns 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.app-shell.is-sidebar-collapsed {
+  grid-template-columns: var(--sidebar-collapsed-width) minmax(0, 1fr);
 }
 
 .sidebar {
@@ -328,6 +333,39 @@ kbd {
   backdrop-filter: blur(14px);
 }
 
+.topbar__lead {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+}
+
+.sidebar-toggle {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink-soft);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.sidebar-toggle:hover {
+  border-color: var(--line-strong);
+  background: var(--paper-wash);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
 .topbar__crumb {
   display: flex;
   align-items: center;
@@ -389,6 +427,49 @@ kbd {
   }
 }
 
+@media (min-width: 941px) {
+  .app-shell.is-sidebar-collapsed .sidebar {
+    align-items: center;
+    padding: 22px 10px 17px;
+  }
+
+  .app-shell.is-sidebar-collapsed .brand {
+    width: 100%;
+    justify-content: center;
+    padding: 2px 0 22px;
+  }
+
+  .app-shell.is-sidebar-collapsed .brand__text,
+  .app-shell.is-sidebar-collapsed .sidebar__section-head,
+  .app-shell.is-sidebar-collapsed .sidebar__footer,
+  .app-shell.is-sidebar-collapsed .nav-item span,
+  .app-shell.is-sidebar-collapsed .field-rail__item span {
+    display: none;
+  }
+
+  .app-shell.is-sidebar-collapsed .main-nav,
+  .app-shell.is-sidebar-collapsed .sidebar__fields {
+    width: 100%;
+  }
+
+  .app-shell.is-sidebar-collapsed .nav-item,
+  .app-shell.is-sidebar-collapsed .field-rail__item {
+    justify-content: center;
+    gap: 0;
+    padding: 10px;
+  }
+
+  .app-shell.is-sidebar-collapsed .sidebar__fields {
+    margin-top: 18px;
+  }
+
+  .app-shell.is-sidebar-collapsed .field-rail {
+    width: 100%;
+    align-items: center;
+    padding-right: 0;
+  }
+}
+
 @media (max-width: 1180px) {
   :root {
     --sidebar-width: 238px;
@@ -408,8 +489,13 @@ kbd {
 }
 
 @media (max-width: 940px) {
-  .app-shell {
+  .app-shell,
+  .app-shell.is-sidebar-collapsed {
     grid-template-columns: 1fr;
+  }
+
+  .sidebar-toggle {
+    display: none;
   }
 
   .sidebar {
@@ -475,6 +561,7 @@ kbd {
   .topbar {
     position: sticky;
     top: 53px;
+    display: none;
   }
 }
 

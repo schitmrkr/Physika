@@ -81,23 +81,58 @@ export class LocalStorageStudyRepository implements StudyRepository {
   }
 
   private load(): Study[] {
+    const seeds = SEED_STUDIES.map((study) => ({ ...study }));
     try {
       const raw = window.localStorage.getItem(this.storageKey);
       if (!raw) {
-        const seeds = SEED_STUDIES.map((study) => ({ ...study }));
         window.localStorage.setItem(this.storageKey, JSON.stringify(seeds));
         return seeds;
       }
 
       const parsed: unknown = JSON.parse(raw);
-      if (!Array.isArray(parsed)) return SEED_STUDIES.map((study) => ({ ...study }));
+      if (!Array.isArray(parsed)) return seeds;
 
       const valid = parsed.filter(isStudy);
-      return valid.length > 0 || parsed.length === 0
-        ? valid
-        : SEED_STUDIES.map((study) => ({ ...study }));
+      const stored = valid.length > 0 || parsed.length === 0 ? valid : seeds;
+      const seedById = new Map(seeds.map((seed) => [seed.id, seed]));
+      const seen = new Set<string>();
+      let changed = parsed.length !== valid.length;
+
+      const synced: Study[] = [];
+      for (const study of stored) {
+        const seed = seedById.get(study.id);
+        if (!seed) {
+          if (study.provenance === 'seed') {
+            changed = true;
+            continue;
+          }
+          synced.push(study);
+          continue;
+        }
+
+        seen.add(study.id);
+        const next: Study = {
+          ...seed,
+          favorite: study.favorite,
+          updatedAt: study.updatedAt,
+        };
+        if (JSON.stringify(next) !== JSON.stringify(study)) changed = true;
+        synced.push(next);
+      }
+
+      for (const seed of seeds) {
+        if (seen.has(seed.id)) continue;
+        synced.push(seed);
+        changed = true;
+      }
+
+      if (changed) {
+        window.localStorage.setItem(this.storageKey, JSON.stringify(synced));
+      }
+
+      return synced;
     } catch {
-      return SEED_STUDIES.map((study) => ({ ...study }));
+      return seeds;
     }
   }
 

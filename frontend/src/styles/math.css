@@ -365,6 +365,7 @@ body {
 .field-brief {
   margin: 24px 0 16px;
   padding: 19px 20px;
+  min-height: 118px;
   border: 1px solid var(--line);
   border-left: 3px solid var(--subject);
   border-radius: 0;
@@ -389,14 +390,21 @@ body {
 }
 
 .field-brief__copy h2 {
+  overflow: hidden;
   margin: 3px 0 5px;
   font-size: 1.85rem;
   letter-spacing: -0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .field-brief__copy p {
+  display: -webkit-box;
+  overflow: hidden;
   font-size: 0.8rem;
   line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .field-brief__meta strong {
@@ -662,11 +670,11 @@ body {
 }
 
 .note-head h1 {
-  margin: 24px 0 17px;
+  margin: 20px 0 14px;
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5.6vw, 5.7rem);
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
   letter-spacing: -0.02em;
-  line-height: 0.94;
+  line-height: 1;
 }
 
 .note-head__lede {
@@ -1062,7 +1070,7 @@ body {
   }
 
   .note-head h1 {
-    font-size: clamp(2.8rem, 11vw, 4.4rem);
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
   }
 
   .note-paper {

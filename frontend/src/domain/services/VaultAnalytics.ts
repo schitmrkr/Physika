@@ -12,4 +12,5 @@ export const buildSubjectReadings = (studies: Study[], subjects: Subject[] = SUB
       );
       return { subject, count: entries.length, latest };
     })
+    .filter((reading) => reading.count > 0)
     .sort((a, b) => b.count - a.count || a.subject.name.localeCompare(b.subject.name));
