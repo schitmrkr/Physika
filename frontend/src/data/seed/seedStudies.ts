@@ -10,6 +10,7 @@ interface SeedInput {
   tags: string[];
   content: string;
   createdAt: string;
+  sortOrder?: number;
   format?: StudyFormat;
   favorite?: boolean;
 }
@@ -26,6 +27,7 @@ const makeSeed = (input: SeedInput): Study => ({
   attachments: [],
   createdAt: input.createdAt,
   updatedAt: input.createdAt,
+  sortOrder: input.sortOrder ?? 0,
   readMinutes: readingMinutes(input.content),
   wordCount: countWords(input.content),
   favorite: input.favorite ?? false,
@@ -41,7 +43,8 @@ export const SEED_STUDIES: Study[] = [
     chapter: 'Symmetry',
     tags: ['symmetry', 'action', 'gauge', 'invariance'],
     content: STUDY_NOTES.gaugesymmetry1,
-    createdAt: '2026-10-27T18:40:00.000Z',
+    createdAt: '2026-10-29T18:40:00.000Z',
+    sortOrder: 1,
     favorite: true,
   }),
   makeSeed({
@@ -51,7 +54,8 @@ export const SEED_STUDIES: Study[] = [
     chapter: 'Group U(1)',
     tags: ['symmetry', 'action', 'gauge', 'invariance'],
     content: STUDY_NOTES.gaugegroupu1,
-    createdAt: '2026-10-27T18:40:00.000Z',
+    createdAt: '2026-10-29T18:40:00.000Z',
+    sortOrder: 2,
     favorite: true,
   }),
   makeSeed({
@@ -61,7 +65,30 @@ export const SEED_STUDIES: Study[] = [
     chapter: 'Gauge Field',
     tags: ['symmetry', 'action', 'gauge', 'invariance'],
     content: STUDY_NOTES.guagefieldandgeometry3,
-    createdAt: '2026-10-27T18:40:00.000Z',
+    createdAt: '2026-10-29T18:40:00.000Z',
+    sortOrder: 3,
+    favorite: true,
+  }),
+  makeSeed({
+    id: 'gauge-constructing-electromagnetism-3',
+    title: '4. Constructing Electromagnetism',
+    subjectId: 'gauge-theory',
+    chapter: 'Electromagnetism',
+    tags: ['symmetry', 'action', 'gauge', 'invariance', 'electromagnetism'],
+    content: STUDY_NOTES.gaugeelectromagnetism4,
+    createdAt: '2026-10-29T18:40:00.000Z',
+    sortOrder: 4,
+    favorite: true,
+  }),
+  makeSeed({
+    id: 'gauge-to-qed-5',
+    title: '5. Gauge to QED',
+    subjectId: 'gauge-theory',
+    chapter: 'QED',
+    tags: ['symmetry', 'action', 'gauge', 'invariance', 'electromagnetism', 'qed'],
+    content: STUDY_NOTES.gaugetoqed5,
+    createdAt: '2026-10-29T18:40:00.000Z',
+    sortOrder: 5,
     favorite: true,
   }),
   makeSeed({
@@ -74,13 +101,47 @@ export const SEED_STUDIES: Study[] = [
     createdAt: '2026-10-24T09:12:00.000Z',
   }),
   makeSeed({
-    id: 'seed_klein_gordon',
-    title: 'Klein–Gordon: The First Relativistic Attempt',
+    id: 'qft-attempts-at-relativistic-qm-1',
+    title: '1. Klein–Gordon',
     subjectId: 'quantum-field-theory',
     chapter: 'Relativistic quantum mechanics',
     tags: ['klein-gordon', 'relativity', 'negative-energy'],
-    content: STUDY_NOTES.kleinGordon,
+    content: STUDY_NOTES.qftattempsatrelativisticqm1,
     createdAt: '2026-10-20T16:05:00.000Z',
+    sortOrder: 1,
+    favorite: true,
+  }),
+  makeSeed({
+    id: 'qft-klien-gordon-dirac-qm-1-1',
+    title: '1.1 Klein–Gordon (Cont.) and Dirac Equations',
+    subjectId: 'quantum-field-theory',
+    chapter: 'Klien Gordon to Dirac',
+    tags: ['klein-gordon', 'relativity', 'negative-energy'],
+    content: STUDY_NOTES.qftkliengordondirac1_1,
+    createdAt: '2026-10-20T16:05:00.000Z',
+    sortOrder: 2,
+    favorite: true,
+  }),
+  makeSeed({
+    id: 'qft-pauli-and-dirac-1-2',
+    title: '1.2 Pauli and Dirac Matrices',
+    subjectId: 'quantum-field-theory',
+    chapter: 'Pauli and Dirac Matrices',
+    tags: ['klein-gordon', 'relativity', 'negative-energy', 'matrices', 'Pauli', 'Dirac'],
+    content: STUDY_NOTES.qftpaulianddiracmatrices1_2,
+    createdAt: '2026-10-20T16:05:00.000Z',
+    sortOrder: 3,
+    favorite: true,
+  }),
+  makeSeed({
+    id: 'qft-transistion-to-qft-1-3',
+    title: '1.3 Transistion to Quantum Field Theory',
+    subjectId: 'quantum-field-theory',
+    chapter: 'Transistion to QFT',
+    tags: ['klein-gordon', 'relativity', 'negative-energy', 'matrices', 'Pauli', 'Dirac'],
+    content: STUDY_NOTES.qfttransistiontoqft1_3,
+    createdAt: '2026-10-20T16:05:00.000Z',
+    sortOrder: 3,
     favorite: true,
   }),
   makeSeed({

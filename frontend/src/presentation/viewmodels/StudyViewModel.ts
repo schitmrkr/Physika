@@ -43,10 +43,28 @@ export class StudyViewModel extends ViewModel<StudyState> {
     }
 
     const all = await this.repository.list();
-    const related = all
-      .filter((entry) => entry.id !== study.id && entry.subjectId === study.subjectId)
-      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-      .slice(0, 3);
+    const thread = all
+      .filter((entry) => entry.subjectId === study.subjectId)
+      .sort(
+        (a, b) =>
+          (a.sortOrder ?? 0) - (b.sortOrder ?? 0) ||
+          a.createdAt.localeCompare(b.createdAt) ||
+          a.title.localeCompare(b.title),
+      );
+    const currentIndex = thread.findIndex((entry) => entry.id === study.id);
+    const related = currentIndex >= 0 ? thread.slice(currentIndex + 1, currentIndex + 4) : [];
+
+    if (related.length < 3) {
+      const chosen = new Set(related.map((entry) => entry.id));
+      const pool = thread.filter((entry) => entry.id !== study.id && !chosen.has(entry.id));
+
+      for (let index = pool.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [pool[index], pool[swapIndex]] = [pool[swapIndex], pool[index]];
+      }
+
+      related.push(...pool.slice(0, 3 - related.length));
+    }
 
     this.setState({
       study,

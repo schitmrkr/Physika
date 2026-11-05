@@ -24,6 +24,7 @@ export interface Study {
   attachments: StudyAttachment[];
   createdAt: string;
   updatedAt: string;
+  sortOrder: number;
   readMinutes: number;
   wordCount: number;
   favorite: boolean;
