@@ -171,4 +171,22 @@ export const SEED_STUDIES: Study[] = [
     content: STUDY_NOTES.fieldsInMatter,
     createdAt: '2026-09-30T13:48:00.000Z',
   }),
+  makeSeed({
+    id: 'seed-gravitational-waves-1',
+    title: '1. Gravitational Waves: Basic Idea',
+    subjectId: 'gravitational-waves',
+    chapter: 'Basic Idea',
+    tags: ['gravitational', 'waves', 'field', 'einstein'],
+    content: STUDY_NOTES.gravitationalwaves1,
+    createdAt: '2026-09-30T13:48:00.000Z',
+  }),
+  makeSeed({
+    id: 'seed-gravitational-waves-2',
+    title: '2. Simplifying the Einstein equations',
+    subjectId: 'gravitational-waves',
+    chapter: 'Einstein Equations',
+    tags: ['gravitational', 'waves', 'field', 'einstein'],
+    content: STUDY_NOTES.gravitationalwaves2,
+    createdAt: '2026-09-30T13:48:00.000Z',
+  }),
 ];

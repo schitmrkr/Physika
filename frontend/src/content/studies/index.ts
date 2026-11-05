@@ -15,6 +15,9 @@ import curvature from './tensor-riemannian-geometry/curvature-as-the-failure-to-
 import schrodinger from './quantum-mechanics/schrodinger-from-a-plane-wave.md?raw';
 import fieldsInMatter from './circuits-signal-theory/fields-in-matter-dipoles-and-polarisation.md?raw';
 
+import gravitationalwaves1 from './gravitational-waves/1-basic-idea.md?raw';
+import gravitationalwaves2 from './gravitational-waves/2-simplifying-einstein-equation.md?raw';
+
 export const STUDY_NOTES = {
   gaugesymmetry1,
   gaugegroupu1,
@@ -29,4 +32,6 @@ export const STUDY_NOTES = {
   curvature,
   schrodinger,
   fieldsInMatter,
+  gravitationalwaves1,
+  gravitationalwaves2
 } as const;
