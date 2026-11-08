@@ -21,7 +21,7 @@ Polarization explains why dielectrics partially cancel the external electric fie
 A dielectric material, when placed in an external electric field $\mathbf{E}$, becomes polarized. This means that the microscopic dipoles within the material align slightly with the field. The polarization vector $\mathbf{P}$ is defined:
 
 $$
-\mathbf{P} = dipole \space moment \space per \space unit \space volume
+\mathbf{P} = \text{dipole moment per unit volume}
 $$
 
 Units: Coulombs per cubic meter ($C/m^3$)
@@ -39,7 +39,7 @@ $$
 Proof:
 
 $$
-P(\vec{r}) = \frac{electric \space dipole \space moment}{unit \space volume}
+P(\vec{r}) = \frac{\text{electric dipole moment}}{\text{unit volume}}
 $$
 
 At a microscopic level, matter is made up of bound charges, positive and negative charges are slighly displaced and each tiny region behaves like a dipole.
@@ -170,7 +170,7 @@ where, $J_{tot} = J_f + J_b$, i.e. the sum of free and bound current densities.
 In magnetic materials, atoms behave like tiny current loop (due to electron motion and spin). The magnetization vector $\mathbf{M}$ is defined as:
 
 $$
-\mathbf{M} = magnetic \space dipole \space moment \space per \space unit \space volume
+\mathbf{M} = \text{magnetic dipole moment per unit volume}
 $$
 
 This produces two types of bound currents: volume bound current density $\mathbf{J}_b$ and surface bound current density $\mathbf{K}_b$.
@@ -306,7 +306,7 @@ Circuit law: $Q = CV$.
 Consider a parallel plate capacitor:
 
 $$
-Electric \space field \space between \space plates: E = \frac{V}{d}
+\text{Electric field between plates}: E = \frac{V}{d}
 $$
 
 where, $V$ is the potential difference between the plates and $d$ is the distance between the plates.
