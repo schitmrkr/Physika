@@ -9,6 +9,22 @@
       content="Physika is a local research vault for depositing and revisiting physics field notes."
     />
     <meta name="theme-color" content="#111318" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('physika.theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.dataset.theme = theme;
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

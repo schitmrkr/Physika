@@ -8,6 +8,7 @@ import './styles/shell.css';
 import './styles/views.css';
 import './styles/markdown.css';
 import './styles/math.css';
+import './styles/theme.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

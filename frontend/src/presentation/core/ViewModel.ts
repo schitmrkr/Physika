@@ -10,6 +10,10 @@ export abstract class ViewModel<TState> {
 
   getState = (): TState => this.state;
 
+  connect(): void {}
+
+  disconnect(): void {}
+
   subscribe = (listener: Listener): (() => void) => {
     this.listeners.add(listener);
     return () => {
@@ -26,6 +30,7 @@ export abstract class ViewModel<TState> {
   }
 
   dispose(): void {
+    this.disconnect();
     this.listeners.clear();
   }
 }

@@ -1,3 +1,5 @@
+import { splitMath } from './math';
+
 export interface NoteHeading {
   id: string;
   text: string;
@@ -71,14 +73,28 @@ export const titleFromFilename = (filename: string): string => {
 
 export const extractHeadings = (markdown: string): NoteHeading[] => {
   const withoutCode = markdown.replace(/```[\s\S]*?```/g, '');
+  const seen = new Map<string, number>();
   return withoutCode
     .split('\n')
     .map((line) => {
       const match = /^(#{1,3})\s+(.+?)\s*$/.exec(line);
       if (!match) return null;
-      const text = match[2].replace(/[*_`]/g, '').trim();
+      const text = splitMath(match[2])
+        .map((part) =>
+          part.type === 'math'
+            ? part.raw
+            : part.value
+                .replace(/!\[[^\]]*]\([^)]*\)/g, '')
+                .replace(/\[([^\]]*)]\([^)]*\)/g, '$1')
+                .replace(/[*_`]/g, ''),
+        )
+        .join('')
+        .trim();
+      const base = slugify(text) || 'section';
+      const count = seen.get(base) ?? 0;
+      seen.set(base, count + 1);
       return {
-        id: slugify(text),
+        id: count === 0 ? base : `${base}-${count + 1}`,
         text,
         level: match[1].length,
       };

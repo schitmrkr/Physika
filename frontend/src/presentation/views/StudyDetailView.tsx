@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import type { CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  ArrowLeft,
   ArrowRight,
   Clock3,
   Download,
@@ -14,6 +13,7 @@ import { useContainer } from '../../app/AppProviders';
 import { useViewModel } from '../core/useViewModel';
 import { StudyViewModel } from '../viewmodels/StudyViewModel';
 import { MarkdownNote } from '../components/MarkdownNote';
+import { MathText } from '../components/MathText';
 import { StudyCard } from '../components/StudyCard';
 import { SubjectBadge } from '../components/SubjectBadge';
 import { TagPill } from '../components/TagPill';
@@ -66,13 +66,6 @@ export const StudyDetailView = () => {
       className="page study-detail"
       style={{ '--subject': subject.accent, '--subject-soft': subject.tint } as CSSProperties}
     >
-      <div className="note-topline">
-        <Link to="/vault" className="text-link">
-          <ArrowLeft size={15} />
-          Study library
-        </Link>
-      </div>
-
       <header className="note-head">
         <div className="note-head__subject">
           <SubjectBadge subject={subject} />
@@ -126,7 +119,7 @@ export const StudyDetailView = () => {
                   <li key={`${heading.id}-${index}`} className={`toc__item toc__item--h${heading.level}`}>
                     <a href={`#${heading.id}`}>
                       <span>{String(index + 1).padStart(2, '0')}</span>
-                      {heading.text}
+                      <MathText text={heading.text} />
                     </a>
                   </li>
                 ))}

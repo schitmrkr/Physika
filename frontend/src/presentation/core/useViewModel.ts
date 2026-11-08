@@ -9,7 +9,10 @@ export const useViewModel = <TState, TVM extends ViewModel<TState>>(
 
   useSyncExternalStore(viewModel.subscribe, viewModel.getState, viewModel.getState);
 
-  useEffect(() => () => viewModel.dispose(), [viewModel]);
+  useEffect(() => {
+    viewModel.connect();
+    return () => viewModel.disconnect();
+  }, [viewModel]);
 
   return viewModel;
 };

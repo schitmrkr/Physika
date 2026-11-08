@@ -16,7 +16,7 @@ export interface StudyState {
 }
 
 export class StudyViewModel extends ViewModel<StudyState> {
-  private readonly unsubscribe: () => void;
+  private unsubscribe: (() => void) | null = null;
 
   constructor(
     private readonly repository: StudyRepository,
@@ -30,8 +30,17 @@ export class StudyViewModel extends ViewModel<StudyState> {
       loading: true,
       error: null,
     });
-    this.unsubscribe = repository.subscribe(() => void this.refresh());
     void this.refresh();
+  }
+
+  connect(): void {
+    if (this.unsubscribe) return;
+    this.unsubscribe = this.repository.subscribe(() => void this.refresh());
+  }
+
+  disconnect(): void {
+    this.unsubscribe?.();
+    this.unsubscribe = null;
   }
 
   async refresh(): Promise<void> {
@@ -91,10 +100,5 @@ export class StudyViewModel extends ViewModel<StudyState> {
     const { study, subject } = this.state;
     if (!study) return;
     downloadStudy(study, subject?.name ?? 'Unfiled');
-  }
-
-  dispose(): void {
-    this.unsubscribe();
-    super.dispose();
   }
 }

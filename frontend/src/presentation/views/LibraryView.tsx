@@ -11,6 +11,7 @@ import { EmptyState } from '../components/EmptyState';
 import type { StudySort } from '../../domain/entities/Study';
 
 const SORT_LABELS: Record<StudySort, string> = {
+  random: 'Shuffled',
   recent: 'Newest first',
   oldest: 'Oldest first',
   title: 'Title A–Z',
@@ -34,14 +35,26 @@ export const LibraryView = () => {
   const visibleStudies = vm.visibleStudies;
 
   useEffect(() => {
+    if (initialSubject === null) {
+      vm.shuffle();
+    }
     vm.setSubject(initialSubject);
   }, [initialSubject, vm]);
+
+  useEffect(() => {
+    const shuffle = (): void => vm.shuffle();
+    window.addEventListener('physika:shuffle-library', shuffle);
+    return () => window.removeEventListener('physika:shuffle-library', shuffle);
+  }, [vm]);
 
   useEffect(() => {
     if (initialQuery) vm.setQuery(initialQuery);
   }, [initialQuery, vm]);
 
   const chooseSubject = (subjectId: string | null): void => {
+    if (subjectId === null) {
+      vm.shuffle();
+    }
     vm.setSubject(subjectId);
     navigate(subjectId ? `/vault?subject=${subjectId}` : '/vault', { replace: true });
   };

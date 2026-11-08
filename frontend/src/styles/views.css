@@ -1841,10 +1841,10 @@
 .toc__item a {
   display: flex;
   gap: 8px;
-  padding: 5px 6px;
+  padding: 6px 6px;
   border-radius: 6px;
   color: var(--ink-soft);
-  font-size: 0.67rem;
+  font-size: 0.82rem;
   line-height: 1.35;
   transition: background 140ms ease, color 140ms ease;
 }
@@ -1858,7 +1858,7 @@
   flex: 0 0 auto;
   color: var(--ink-faint);
   font-family: var(--font-mono);
-  font-size: 0.48rem;
+  font-size: 0.56rem;
 }
 
 .toc__item--h2 a {
@@ -1868,7 +1868,7 @@
 
 .toc__item--h3 a {
   padding-left: 19px;
-  font-size: 0.63rem;
+  font-size: 0.78rem;
 }
 
 .catalog {

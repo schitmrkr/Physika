@@ -43,7 +43,7 @@ export interface StudyDraft {
   attachments: StudyAttachment[];
 }
 
-export type StudySort = 'recent' | 'oldest' | 'title' | 'longest';
+export type StudySort = 'random' | 'recent' | 'oldest' | 'title' | 'longest';
 
 export interface StudyClassification {
   subject: Subject;

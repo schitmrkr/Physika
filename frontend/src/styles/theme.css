@@ -1,0 +1,90 @@
+/* ------------------------------------------------------------------ */
+/* Night mode                                                          */
+/* ------------------------------------------------------------------ */
+
+:root[data-theme='dark'] {
+  --paper: #12141a;
+  --paper-raised: #1a1d25;
+  --paper-deep: #232733;
+  --paper-wash: #1f232d;
+  --ink: #ece9e1;
+  --ink-2: #d8d5cd;
+  --ink-soft: #a8a69e;
+  --ink-faint: #7c7a73;
+  --line: #2f333d;
+  --line-strong: #474c58;
+  --accent: #7b90ff;
+  --accent-deep: #9dacff;
+  --accent-soft: #1c2340;
+  --signal: #ff8a65;
+  --signal-soft: #3a211b;
+  --ok: #4ade9a;
+  --danger: #ff6b6b;
+  --white: #fffdf8;
+  --sidebar: #0c0d11;
+  --sidebar-soft: #171922;
+  --sidebar-line: #262933;
+  --shadow-soft: 0 30px 80px -50px rgba(0, 0, 0, 0.85);
+  --shadow-card: 0 18px 44px -36px rgba(0, 0, 0, 0.7);
+  --shadow-pop: 0 22px 50px -30px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* The sidebar and telemetry stay dark in both themes, so keep their
+   "paper" surfaces light to preserve their internal contrast. */
+:root[data-theme='dark'] .sidebar {
+  --paper: #f3efe6;
+  --paper-raised: #f3efe6;
+  --ink: #15161a;
+  --ink-2: #23252c;
+}
+
+:root[data-theme='dark'] .telemetry {
+  --ink: #101218;
+  --paper-raised: #f3efe6;
+}
+
+/* Subject tints are supplied inline as light pastels. Replace them with a
+   translucent wash of the subject accent so they read on dark surfaces. */
+:root[data-theme='dark'] [style*='--subject-soft'] {
+  --subject-soft: color-mix(in srgb, var(--subject) 22%, transparent) !important;
+}
+
+:root[data-theme='dark'] .workspace::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+:root[data-theme='dark'] .topbar {
+  background: rgba(18, 20, 26, 0.86);
+}
+
+:root[data-theme='dark'] .workspace__scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  background-clip: padding-box;
+}
+
+:root[data-theme='dark'] .dropzone {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+:root[data-theme='dark'] .note-editor,
+:root[data-theme='dark'] .note-preview {
+  background: var(--paper);
+}
+
+:root[data-theme='dark'] .note-editor::placeholder {
+  color: var(--ink-faint);
+}
+
+:root[data-theme='dark'] .markdown-body pre {
+  border-color: var(--line);
+  background: #0b0c10;
+}
+
+:root[data-theme='dark'] .segmented button.is-active {
+  box-shadow: 0 3px 9px -6px rgba(0, 0, 0, 0.8);
+}

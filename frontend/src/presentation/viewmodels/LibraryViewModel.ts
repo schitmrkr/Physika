@@ -10,12 +10,24 @@ export interface LibraryState {
   query: string;
   subjectId: string | null;
   sort: StudySort;
+  shuffleSeed: number;
   favoritesOnly: boolean;
   loading: boolean;
 }
 
+const createShuffleSeed = (): number => Math.floor(Math.random() * 0xffffffff);
+
+const shuffleRank = (id: string, seed: number): number => {
+  let hash = 2166136261 ^ seed;
+  for (let index = 0; index < id.length; index += 1) {
+    hash ^= id.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+};
+
 export class LibraryViewModel extends ViewModel<LibraryState> {
-  private readonly unsubscribe: () => void;
+  private unsubscribe: (() => void) | null = null;
 
   constructor(
     private readonly repository: StudyRepository,
@@ -27,16 +39,26 @@ export class LibraryViewModel extends ViewModel<LibraryState> {
       readings: [],
       query: initialQuery,
       subjectId: initialSubject,
-      sort: 'recent',
+      sort: 'random',
+      shuffleSeed: createShuffleSeed(),
       favoritesOnly: false,
       loading: true,
     });
-    this.unsubscribe = repository.subscribe(() => void this.refresh());
     void this.refresh();
   }
 
+  connect(): void {
+    if (this.unsubscribe) return;
+    this.unsubscribe = this.repository.subscribe(() => void this.refresh());
+  }
+
+  disconnect(): void {
+    this.unsubscribe?.();
+    this.unsubscribe = null;
+  }
+
   get visibleStudies(): Study[] {
-    const { studies, query, subjectId, sort, favoritesOnly } = this.state;
+    const { studies, query, subjectId, sort, shuffleSeed, favoritesOnly } = this.state;
     const needle = query.trim().toLowerCase();
 
     const filtered = studies.filter((study) => {
@@ -57,7 +79,40 @@ export class LibraryViewModel extends ViewModel<LibraryState> {
       return haystack.includes(needle);
     });
 
+    const favoriteFirst = (a: Study, b: Study): number =>
+      subjectId === null ? Number(b.favorite) - Number(a.favorite) : 0;
+
+    if (sort === 'random') {
+      const hasSortOrder =
+        subjectId !== null && filtered.some((study) => study.sortOrder > 0);
+
+      if (hasSortOrder) {
+        const orderOf = (study: Study): number =>
+          study.sortOrder > 0 ? study.sortOrder : Number.MAX_SAFE_INTEGER;
+
+        return filtered.sort(
+          (a, b) =>
+            favoriteFirst(a, b) ||
+            orderOf(a) - orderOf(b) ||
+            a.createdAt.localeCompare(b.createdAt) ||
+            a.title.localeCompare(b.title),
+        );
+      }
+
+      const ranks = new Map(
+        filtered.map((study) => [study.id, shuffleRank(study.id, shuffleSeed)]),
+      );
+      return filtered.sort(
+        (a, b) =>
+          favoriteFirst(a, b) ||
+          (ranks.get(a.id) ?? 0) - (ranks.get(b.id) ?? 0) ||
+          a.id.localeCompare(b.id),
+      );
+    }
+
     return filtered.sort((a, b) => {
+      const favorites = favoriteFirst(a, b);
+      if (favorites !== 0) return favorites;
       if (sort === 'title') return a.title.localeCompare(b.title);
       if (sort === 'oldest') return a.createdAt.localeCompare(b.createdAt);
       if (sort === 'longest') return b.readMinutes - a.readMinutes;
@@ -83,11 +138,19 @@ export class LibraryViewModel extends ViewModel<LibraryState> {
   }
 
   setSubject(subjectId: string | null): void {
+    if (subjectId !== null) {
+      this.setState({ subjectId, sort: 'random' });
+      return;
+    }
     this.setState({ subjectId });
   }
 
   setSort(sort: StudySort): void {
     this.setState({ sort });
+  }
+
+  shuffle(): void {
+    this.setState({ sort: 'random', shuffleSeed: createShuffleSeed() });
   }
 
   toggleFavoritesOnly(): void {
@@ -102,10 +165,5 @@ export class LibraryViewModel extends ViewModel<LibraryState> {
 
   async deleteStudy(id: string): Promise<void> {
     await this.repository.remove(id);
-  }
-
-  dispose(): void {
-    this.unsubscribe();
-    super.dispose();
   }
 }

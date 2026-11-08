@@ -11,12 +11,21 @@ export interface ShellState {
 }
 
 export class ShellViewModel extends ViewModel<ShellState> {
-  private readonly unsubscribe: () => void;
+  private unsubscribe: (() => void) | null = null;
 
   constructor(private readonly repository: StudyRepository) {
     super({ total: 0, favorites: 0, readings: [], loading: true });
-    this.unsubscribe = repository.subscribe(() => void this.refresh());
     void this.refresh();
+  }
+
+  connect(): void {
+    if (this.unsubscribe) return;
+    this.unsubscribe = this.repository.subscribe(() => void this.refresh());
+  }
+
+  disconnect(): void {
+    this.unsubscribe?.();
+    this.unsubscribe = null;
   }
 
   async refresh(): Promise<void> {
@@ -27,10 +36,5 @@ export class ShellViewModel extends ViewModel<ShellState> {
       readings: buildSubjectReadings(studies),
       loading: false,
     });
-  }
-
-  dispose(): void {
-    this.unsubscribe();
-    super.dispose();
   }
 }

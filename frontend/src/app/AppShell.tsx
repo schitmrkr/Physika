@@ -1,11 +1,19 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { ChevronRight, LibraryBig, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import {
+  ChevronRight,
+  LibraryBig,
+  Moon,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Sun,
+} from 'lucide-react';
 import { useContainer } from './AppProviders';
 import { useViewModel } from '../presentation/core/useViewModel';
 import { ShellViewModel } from '../presentation/viewmodels/ShellViewModel';
 import { SubjectGlyph } from '../presentation/components/SubjectGlyph';
 import { PhysikaMark } from '../presentation/components/PhysikaMark';
+import { SUBJECTS } from '../domain/taxonomy/subjects';
 
 const SECTION_LABELS: { match: (pathname: string) => boolean; label: string }[] = [
   { match: (pathname) => pathname.startsWith('/vault/'), label: 'Reading room' },
@@ -16,7 +24,36 @@ const NAV_ITEMS = [
   { to: '/vault', label: 'Study library', index: '01', icon: LibraryBig, end: false },
 ];
 
+const FIELD_ORDER = [
+  'black-holes',
+  'tensor-riemannian-geometry',
+  'quantum-mechanics',
+  'differential-geometry',
+  'quantum-field-theory',
+];
+
+const fieldRank = (subjectId: string): number => {
+  const index = FIELD_ORDER.indexOf(subjectId);
+  return index === -1 ? FIELD_ORDER.length : index;
+};
+
 const SIDEBAR_STORAGE_KEY = 'physika.sidebar.collapsed';
+const THEME_STORAGE_KEY = 'physika.theme';
+
+type Theme = 'light' | 'dark';
+
+const getInitialTheme = (): Theme => {
+  if (typeof window === 'undefined') {
+    return 'light';
+  }
+
+  const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
+  if (stored === 'light' || stored === 'dark') {
+    return stored;
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
 
 export const AppShell = () => {
   const container = useContainer();
@@ -28,13 +65,19 @@ export const AppShell = () => {
     }
     return window.localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'true';
   });
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   const state = vm.getState();
+  const isDark = theme === 'dark';
   const sectionLabel =
     SECTION_LABELS.find((section) => section.match(location.pathname))?.label ?? 'Study library';
 
   const fieldRail = useMemo(
-    () => [...state.readings].sort((a, b) => a.subject.name.localeCompare(b.subject.name)),
+    () =>
+      [...state.readings].sort((a, b) => {
+        const rankDelta = fieldRank(a.subject.id) - fieldRank(b.subject.id);
+        return rankDelta !== 0 ? rankDelta : a.subject.name.localeCompare(b.subject.name);
+      }),
     [state.readings],
   );
 
@@ -46,6 +89,11 @@ export const AppShell = () => {
   useEffect(() => {
     window.localStorage.setItem(SIDEBAR_STORAGE_KEY, String(sidebarCollapsed));
   }, [sidebarCollapsed]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
 
   return (
     <div className={`app-shell ${sidebarCollapsed ? 'is-sidebar-collapsed' : ''}`}>
@@ -70,6 +118,7 @@ export const AppShell = () => {
                 end={item.end}
                 title={item.label}
                 className={({ isActive }) => `nav-item ${isActive ? 'is-active' : ''}`}
+                onClick={() => window.dispatchEvent(new Event('physika:shuffle-library'))}
               >
                 <Icon size={17} strokeWidth={1.8} />
                 <span>{item.label}</span>
@@ -82,7 +131,7 @@ export const AppShell = () => {
         <div className="sidebar__fields">
           <div className="sidebar__section-head">
             <span>Field index</span>
-            <span>{state.readings.filter((reading) => reading.count > 0).length}/13</span>
+            <span>{state.readings.filter((reading) => reading.count > 0).length}/{SUBJECTS.length}</span>
           </div>
           <div className="field-rail">
             {fieldRail.map((reading) => {
@@ -139,6 +188,24 @@ export const AppShell = () => {
               <ChevronRight size={13} />
               <strong>{sectionLabel}</strong>
             </div>
+          </div>
+
+          <div className="topbar__tools">
+            <button
+              type="button"
+              className="theme-toggle"
+              role="switch"
+              aria-checked={isDark}
+              aria-label={isDark ? 'Switch to day mode' : 'Switch to night mode'}
+              title={isDark ? 'Switch to day mode' : 'Switch to night mode'}
+              onClick={() => setTheme(isDark ? 'light' : 'dark')}
+            >
+              <Sun size={14} strokeWidth={1.8} className="theme-toggle__sun" />
+              <span className="theme-toggle__track" aria-hidden="true">
+                <span className="theme-toggle__thumb" />
+              </span>
+              <Moon size={14} strokeWidth={1.8} className="theme-toggle__moon" />
+            </button>
           </div>
         </header>
 
