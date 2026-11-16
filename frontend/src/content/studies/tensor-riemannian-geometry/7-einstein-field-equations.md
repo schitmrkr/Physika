@@ -251,7 +251,7 @@ $$
 \text{Analogy} & \text{Newton} & \text{Einstein}  \\
 \hline
 \text{potential} & \Phi & g_{\mu \nu}  \\
-\text{field: force per unit mass} & \vec{g} = - \nabla \Phi & \Gamma^\lambda_{\mu \nu} \\
+\text{field: force per unit mass} & \mathbf{g} = - \nabla \Phi & \Gamma^\lambda_{\mu \nu} \\
 \hline
 \end{array}
 $$
@@ -293,7 +293,7 @@ $$
 Thus, accelaration is
 
 $$
-\frac{d^2 \vec{x}}{dt^2} = - \nabla \Phi
+\frac{d^2 \mathbf{x}}{dt^2} = - \nabla \Phi
 $$
 
 
@@ -423,27 +423,27 @@ This difference is called a tidal effect.
 Let the particles have positions:
 
 $$
-\vec{x} \text{ and } \vec{x} + \vec{\xi} 
+\mathbf{x} \text{ and } \mathbf{x} + \mathbf{\xi} 
 $$
 
-where $\vec \xi$ is their small separation vector.
+where $\mathbf \xi$ is their small separation vector.
 
 The acceleration of the first particle is:
 
 $$
-\vec{a}(\vec{x}) = - \nabla \Phi(\vec{x}) 
+\mathbf{a}(\mathbf{x}) = - \nabla \Phi(\mathbf{x}) 
 $$
 
 The acceleration of the second particle is:
 
 $$
-\vec{a}(\vec{x} + \vec{\xi}) = - \nabla \Phi(\vec{x} + \vec{\xi}) 
+\mathbf{a}(\mathbf{x} + \mathbf{\xi}) = - \nabla \Phi(\mathbf{x} + \mathbf{\xi}) 
 $$
 
 Using a first-order Taylor expansion:
 
 $$
-\partial_i \Phi(\vec{x} + \vec{\xi}) \approx \partial_i \Phi(\vec{x}) + \xi^j \partial_j \partial_i \Phi
+\partial_i \Phi(\mathbf{x} + \mathbf{\xi}) \approx \partial_i \Phi(\mathbf{x}) + \xi^j \partial_j \partial_i \Phi
 $$
 
 Therefore, their relative acceleration is:
