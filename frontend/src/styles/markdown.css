@@ -180,10 +180,43 @@
 }
 
 .markdown-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--white);
+}
+
+.markdown-body table:has(img) {
+  border-collapse: separate;
+  border-spacing: 12px;
+  table-layout: fixed;
+}
+
+.markdown-body table:has(img) thead {
+  display: none;
+}
+
+.markdown-body table:has(img) td {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.markdown-body table:has(img) td em {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.markdown-body table:has(img) img {
+  width: 100%;
+  margin: 0;
 }
 
 .markdown-body input[type='checkbox'] {

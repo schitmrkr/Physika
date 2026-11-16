@@ -14,8 +14,20 @@ import qftTransitionToQft1_3 from './quantum-field-theory/1.3-transistion-to-qft
 import tensorRiemannianGeo1 from './tensor-riemannian-geometry/1-tensor-and-riemannian-geo.md?raw';
 import trgTensors2 from './tensor-riemannian-geometry/2-tensors.md?raw';
 import trgCovariantDifferentiation3 from './tensor-riemannian-geometry/3-covariant-differentiation.md?raw';
+import trgCurvatureTensor4 from './tensor-riemannian-geometry/4-curvature-tensor.md?raw';
+import trgGeodesic5 from './tensor-riemannian-geometry/5-geodesic.md?raw';
+import trgSpecialRelativity6 from './tensor-riemannian-geometry/6-special-theory-of-relativity.md?raw';
+import trgEinsteinFieldEquations7 from './tensor-riemannian-geometry/7-einstein-field-equations.md?raw';
 
-import schrodingerEquation from './quantum-mechanics/1-schrodinger-equation.md?raw';
+import qmSchrodingerEquation1 from './quantum-mechanics/1-schrodinger-equation.md?raw';
+import qmTimeIndependentSchrodinger2 from './quantum-mechanics/2-time-independent-schrodinger.md?raw';
+import qmHarmonicOscillator2_2 from './quantum-mechanics/2.1-harmonic-oscillator.md?raw';
+import qmFreeParticles2_3 from './quantum-mechanics/2.2-free-particles.md?raw';
+import qmHilbertSpace3 from './quantum-mechanics/3-hilbert-space.md?raw';
+import qmObservables3_1 from './quantum-mechanics/3.1-observables.md?raw';
+import qmUncertaintyPrinciple3_2 from './quantum-mechanics/3.2-uncertainty-principle.md?raw';
+import qmQm3d1 from './quantum-mechanics/4-qm-3d.md?raw';
+import qmHydrogenatom4_1 from './quantum-mechanics/4.1-hydrogen-atom.md?raw';
 
 import maxwellsEquation from './electromagnetism/maxwells-equations.md?raw';
 import electricFields from './electromagnetism/electric-fields.md?raw';
@@ -32,6 +44,10 @@ import dgSurfaceCurves from './differential-geometry/dg-surface-curves.md?raw';
 import dgInvolutesExvolutes from './differential-geometry/dg-involutes-exvolutes.md?raw';
 
 
+export const STUDY_NOTE_ASSET_BASES = {
+  qmHydrogenatom4_1: 'quantum-mechanics',
+} as const;
+
 export const STUDY_NOTES = {
   gaugeSymmetry1,
   gaugeGroupU1,
@@ -46,7 +62,19 @@ export const STUDY_NOTES = {
   tensorRiemannianGeo1,
   trgTensors2,
   trgCovariantDifferentiation3,
-  schrodingerEquation,
+  trgCurvatureTensor4,
+  trgGeodesic5,
+  trgSpecialRelativity6,
+  trgEinsteinFieldEquations7,
+  qmSchrodingerEquation1,
+  qmTimeIndependentSchrodinger2,
+  qmHarmonicOscillator2_2,
+  qmFreeParticles2_3,
+  qmHilbertSpace3,
+  qmObservables3_1,
+  qmUncertaintyPrinciple3_2,
+  qmQm3d1,
+  qmHydrogenatom4_1,
   electricFields,
   magneticFields,
   maxwellsEquation,

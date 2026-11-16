@@ -104,7 +104,7 @@ export const StudyDetailView = () => {
 
       <div className="note-layout">
         <article className="note-paper">
-          <MarkdownNote content={study.content} />
+          <MarkdownNote content={study.content} assetBase={study.assetBase} />
           {study.attachments.length === 0 && study.content.trim().length === 0 && (
             <p className="note-paper__empty">This entry has no note body yet.</p>
           )}

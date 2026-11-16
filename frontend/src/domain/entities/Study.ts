@@ -20,6 +20,7 @@ export interface Study {
   chapter: string;
   tags: string[];
   content: string;
+  assetBase?: string;
   format: StudyFormat;
   attachments: StudyAttachment[];
   createdAt: string;

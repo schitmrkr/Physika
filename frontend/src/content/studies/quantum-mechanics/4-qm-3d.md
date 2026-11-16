@@ -1,0 +1,490 @@
+### Quantum Mechanics in Three Dimension
+
+The generalization of schrodinger's equation in 3 dimension is straight forward.
+
+$$
+i\hbar \frac{\partial \Psi}{\partial t} = \hat{H} \Psi
+$$
+
+Hamiltonian is obtained from classical energy,
+
+$$
+\frac{1}{2}mv^2 + V = \frac{1}{2m}(p_x^2+p_y^2+p_z^2) + V 
+$$
+
+By standard prescription,
+
+$$
+p_x \to - i\hbar\frac{\partial}{\partial x}, \space p_y \to - i\hbar\frac{\partial}{\partial y}, \space p_z \to - i\hbar\frac{\partial}{\partial z}
+$$
+
+or,
+
+$$
+\mathbf{p} \to -i\hbar \nabla
+$$
+
+Thus,
+
+$$
+i\hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \Psi + V \Psi 
+$$
+
+where,
+
+$$
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
+$$
+
+is the Laplacian in the cartesian coordinate.
+
+The potential energy $V$ and the wave function $\Psi$ are now function of $\mathbf{r} = (x, y , z)$ and $t$. 
+
+$$
+\int |\Psi|^2 d^3r = 1, \qquad d^3r = dx \space dy \space dz
+$$
+
+If $V$ is independent of time, there will be complete set of stationary states,
+
+$$
+\Psi_n(\mathbf{r}, t) = \psi_n(\mathbf{r}) e^{-i E_n t/\hbar}
+$$
+
+Where spatial wave function satisfies time independent schrodinger equation,
+
+$$
+- \frac{\hbar^2}{2m} \nabla^2 \psi + V \psi = E \psi
+$$
+
+The general solution to time-dependent schrodinger equation is
+
+$$
+\Psi(\mathbf{r}, t) = \sum c_n \psi_n(\mathbf{r}) e^{-i E_n t/\hbar}
+$$
+
+
+
+### Spherical Coordinates
+
+In most application, we encounter potential $V$ which is a function only of distance from origin $V(\mathbf{r}) = V(r)$. In spherical coordinates, the Laplacian take the form
+
+$$
+\nabla^2 = \frac{1}{r^2} \frac{\partial}{\partial r} (r^2 \frac{\partial}{\partial r}) + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial}{\partial \theta}) + \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2}{\partial \phi^2}
+$$
+
+We start with Laplacian in Cartesian coordinates,
+
+$$
+\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}
+$$
+
+We use,
+
+$$
+x = r \sin \theta \cos \phi \\
+y = r \sin \theta \sin \phi \\
+z = r \cos \theta
+$$
+
+where, $r$ is distance from origin, $\phi$ is polar angle measured from z-axis, and $\theta$ is azimuthal angle around the z-axis.
+
+We can write differential operators as
+
+$$
+\frac{\partial}{\partial x} = \frac{\partial r}{\partial x} \frac{\partial}{\partial r} + \frac{\partial \theta}{\partial x} \frac{\partial}{\partial \theta} + \frac{\partial \phi}{\partial x} \frac{\partial}{\partial \phi}
+$$
+
+$$
+\frac{\partial}{\partial y} = \frac{\partial r}{\partial y} \frac{\partial}{\partial r} + \frac{\partial \theta}{\partial y} \frac{\partial}{\partial \theta} + \frac{\partial \phi}{\partial y} \frac{\partial}{\partial \phi}
+$$
+
+$$
+\frac{\partial}{\partial z} = \frac{\partial r}{\partial x} \frac{\partial}{\partial r} + \frac{\partial \theta}{\partial z} \frac{\partial}{\partial \theta} + \frac{\partial \phi}{\partial z} \frac{\partial}{\partial \phi}
+$$
+
+Thus in spherical coordinates, the time-independent Schrodinger's equation,
+
+$$
+- \frac{\hbar^2}{2m} [\frac{1}{r^2} \frac{\partial}{\partial r} (r^2 \frac{\partial \psi}{\partial r}) + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial \psi}{\partial \theta}) + \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2 \psi}{\partial \phi^2}] + V \psi = E \psi
+$$
+
+We begin by looking for solutions that are seperable into products,
+
+$$
+\psi(r, \theta, \phi) = R(r) Y(\theta, \phi)
+$$
+
+Puttin this into the Schrodinger's equation,
+
+$$
+- \frac{\hbar^2}{2m} [\frac{Y}{r^2} \frac{d}{d r} (r^2 \frac{d R}{d r}) + \frac{R}{r^2 \sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial Y}{\partial \theta}) + \frac{R}{r^2 \sin^2 \theta} \frac{\partial^2 Y}{\partial \phi^2}] + V RY = E RY
+$$
+
+Dividing by $Y R$ and multiplying by $-2mr^2/\hbar^2$
+
+$$
+\{ \frac{1}{R} \frac{d}{dr} (r^2 \frac{d R}{dr}) - \frac{2mr^2}{\hbar^2} (V(r)-E) \} + \frac{1}{Y} \{ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial Y}{\partial \theta}) + \frac{1}{\sin^2 \theta} \frac{\partial^2 Y}{\partial \phi^2} \} = 0
+$$
+
+We can seperate first and second terms using "seperation constant":
+
+$$
+\frac{1}{R} \frac{d}{dr} (r^2 \frac{d R}{dr}) - \frac{2mr^2}{\hbar^2} (V(r)-E) = l (l+1)
+$$
+
+$$
+\frac{1}{Y} \{ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial Y}{\partial \theta}) + \frac{1}{\sin^2 \theta} \frac{\partial^2 Y}{\partial \phi^2} \} = - l(l+1)
+$$
+
+
+
+### Legendre's Differential Equation
+
+Legendre's differential equation:
+
+$$
+(1-x^2) y'' - 2xy' + l(l+1)y = 0
+$$
+
+Legendre's polynolmial is a family of solutions to this differential equation.
+
+$$
+\{ P_l(x) \}_{l=0}^\infin
+$$
+
+where $l$ is non negative integer.
+
+Rodrigue's formula generates every legendre's polynomial.
+
+$$
+P_l(x) = \frac{1}{2^l l!} \frac{d^l}{dx^l} (x^2 - 1)^l
+$$
+
+We suppose that the solution to the differential equation is 
+
+$$
+y(x) = \sum_{n=0}^\infin a_n x^n
+$$
+
+We substitute this into Legendre's differential equation, we get
+
+$$
+\sum_{n=0}^\infin [(n+2)(n+1)a_{n+2} + [l(l+1)-n(n+1)]a_n] x^n = 0
+$$
+
+So every coefficient must vanish
+
+$$
+(n+2)(n+1)a_{n+2} + [l(l+1)-n(n+1)]a_n = 0
+$$
+
+$$
+a_{n+2} = \frac{n(n+1)-l(l+1)}{(n+2)(n+1)} a_n
+$$
+
+$$
+a_{n+2} = \frac{(n-l)(n+l+1)}{(n+2)(n+1)} a_n
+$$
+
+Suppose $l=3, n=3$, then,
+
+$$
+a_5 = 0
+$$
+
+So, $a_7 = a_9 = .. = 0$
+
+More generally, when $l = 0,1,...$ the series terminates at $x^l$
+
+Therefore,
+
+$$
+P_l(x) = a_0 + a_1 x + .. + a_l x^l
+$$
+
+Now, Legendre's equation can be seen as an operator
+
+$$
+\frac{d}{dx}[(1-x^2)y'] + l(l+1)y = 0
+$$
+
+At point $x=1$, $y=0$.
+
+A natural object containing this factor is $(x^2-1)^l$
+
+Now taking derivative of $(x^2-1)^l$, $l$ times reduces the degree to $l$
+
+So consider
+
+$$
+Q_l(x) = \frac{d^l}{dx^l} (x^2-1)^l
+$$
+
+Can this satisfy Legendre's equation? Yes.
+
+
+### The Angular Equation
+
+$$
+\sin \theta \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial Y}{\partial \theta}) +  \frac{\partial^2 Y}{\partial \phi^2} = - l(l+1) \sin^2 \theta Y
+$$
+
+We solve it by seperation of variables
+
+$$
+Y(\theta, \phi) = \Theta(\theta) \Phi(\phi)
+$$
+
+Plugging this in $\Theta \Phi$, 
+
+$$
+\{ \frac{1}{\Theta} [\sin \theta \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial \Theta}{\partial \theta})] + l(l+1) \sin^2 \theta  \} + \frac{1}{\Phi} \frac{d^2 \Phi}{d \phi^2} = 0
+$$
+
+Again seperating with seperation constant $m^2$
+
+$$
+\frac{1}{\Theta} [\sin \theta \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial \Theta}{\partial \theta})] + l(l+1) \sin^2 \theta  = m^2
+$$
+
+$$
+\frac{1}{\Phi} \frac{d^2 \Phi}{d \phi^2} = -m^2
+$$
+
+The $\phi$ equation is:
+
+$$
+ \frac{d^2 \Phi}{d \phi^2} = - \Phi m^2, \space \Phi(\phi) = e^{i m \phi}
+$$
+
+Since, $\Phi(\phi) = \Phi(\phi+2\pi)$,
+
+$$
+e^{im\phi}  = e^{im \phi} e^{im 2\pi} \to e^{im2\pi} = 1
+$$
+
+This means that $m = 0, \pm 1, \pm 2, ...$
+
+Now, the $\theta$ equation,
+
+$$
+\sin \theta \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial \Theta}{\partial \theta}) + [l(l+1) \sin^2 \theta -m^2] \Theta = 0
+$$
+
+The solution is 
+
+$$
+\Theta(\theta) = A P^m_l(\cos \theta)
+$$
+
+where, $P^m_l(\cos \theta)$ is associated Legendre function defined by
+
+$$
+P^m_l(x) = (-1)^m (1-x^2)^{m/2} (\frac{d}{dx})^m P_l(x)
+$$
+
+and $P_l(x)$ is the $l$-th Legendre's polynomial defined by Rodrigues formula
+
+$$
+P_l(x) = \frac{1}{2^l l!} (\frac{d}{dx})^l (x^2-1)^l
+$$
+
+The first few Legendre's polynomials:
+
+$$
+P_0 = 1, \space P_1 = x, \space P_2 = \frac{1}{2}(3x^2-1), \space P_3 = \frac{1}{2}(5x^3-3x)
+$$
+
+
+$$
+P_4 = \frac{1}{8}(35x^4-30x^2+3), \space P_5 = \frac{1}{8}(63x^5-70x^3+15x)
+$$
+
+Also some Legendre functions
+
+$$
+P^0_2(x) = \frac{1}{2}(3x^2-1), \space P^1_2(x) = -(1-x^2)^{1/2}\frac{d}{dx} [\frac{1}{2} (3x^2-1)] = -3x \sqrt{1-x^2}
+$$
+
+$$
+P^2_2(x) = (1-x^2) (\frac{d}{dx})^2[\frac{1}{2} (3x^2-1)] = 3(1-x^2)
+$$
+
+Notice that $l$ must be a non-negative integer. If $m \gt l$, then equation $P^m_l=0$. For any given $l$,
+
+$$
+l = 0,1,2,3,..; \space m = -l, -l+1,..,l-1,l
+$$
+
+Now the volume element in spherical coordinates,
+
+$$
+d^3 \mathbf{r} = r^2 \sin \theta dr d\theta d\phi = r^2 dr d\Omega, \space d\Omega = sin \theta d\theta d\phi 
+$$
+
+so the normalization ocndition becomes
+
+$$
+\int |\Psi|^2 r^2 \sin \theta dr d\theta d\phi = \int |R|^2 r^2 dr \int |Y|^2 d\Omega = 1
+$$
+
+It is convenient to normalize $R$ and $Y$ seperately,
+
+$$
+\int |R|^2 r^2 dr = 1, \space \int |Y|^2 d\Omega = 1
+$$
+
+The normalized angular wave function  are called spherical harmonics.
+
+$$
+Y^m_l(\theta, \phi) = \sqrt{\frac{(2l+1)(l-m)!}{4\pi (l+m)!}} e^{im\phi} P^m_l(\cos \theta)
+$$
+
+
+### Spherical Harmonics
+
+$$
+Y^m_l(\theta, \phi)
+$$
+
+where, $l = 0,1,2,3...$ and $m < |l|$
+
+The commonality of quantum number $l$ is shared between $R$ radial function of wave function, while $m$ is specific to spherical harmonics. Here $\phi$ is assumed to be azimuthal angle. Also, the quantum number $n$ is associated with $R$ and not $Y$.
+
+Spherical Harmonics general formula:
+
+$$
+Y^m_l(\theta, \phi) = \sqrt{\frac{(2l+1)(l-m)!}{4 \pi (l+m)!}} P^m_l(\cos \theta) e^{im\phi}
+$$
+
+Thus,
+
+$$
+\psi_{nlm} = R_{n,l} Y^m_l e^{-iE_nt/\hbar}
+$$
+
+$$
+n \ge 1, \space 0 \le l \lt n, \space |m| \le l
+$$
+
+Now consider the SE in spherical coordinates.
+
+$$
+- \frac{\hbar^2}{2m} [\frac{1}{r^2} \frac{\partial}{\partial r} (r^2 \frac{\partial \psi}{\partial r}) + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial \psi}{\partial \theta}) + \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2 \psi}{\partial \phi^2}] + V \psi = E \psi
+$$
+
+By seperation of variables $\phi(r, \phi, \theta) = R(r) \Phi(\phi) \Theta(\theta)$, we get
+
+Radial part:
+
+$$
+\frac{1}{R} \frac{d}{dr} (r^2 \frac{d R}{dr}) - \frac{2mr^2}{\hbar^2} (V(r)-E) = l (l+1)
+$$
+
+Spherical Harmonics part:
+
+$$
+\frac{1}{Y} \{ \frac{1}{\sin \theta} \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial Y}{\partial \theta}) + \frac{1}{\sin^2 \theta} \frac{\partial^2 Y}{\partial \phi^2} \} = - l(l+1)
+$$
+
+This can be seperated into two independent ODE,
+
+$$
+ \frac{d^2 \Phi}{d \phi^2} = - \Phi m^2
+$$
+
+$$
+\sin \theta \frac{\partial}{\partial \theta} (\sin \theta \frac{\partial \Theta}{\partial \theta}) + [l(l+1) \sin^2 \theta -m^2] \Theta = 0
+$$
+
+The solution for $\Phi$ is simple,
+
+$$
+\Phi = e^{im\phi}
+$$
+
+Since, $\Phi(\phi) = \Phi(\phi+2\pi)$,
+
+$$
+e^{im\phi}  = e^{im \phi} e^{im 2\pi} \to e^{im2\pi} = 1
+$$
+
+This means that $m = 0, \pm 1, \pm 2, ...$
+
+Now we consider ODE for $\theta$,
+
+$$
+\sin \theta \frac{d}{d \theta} (\sin \theta \frac{d \Theta}{d \theta}) + [l(l+1) \sin^2 \theta -m^2] \Theta = 0
+$$
+
+$$
+\frac{d^2 \Theta}{d \theta^2} + \frac{\cos \theta}{\sin \theta} \frac{d \Theta}{d \theta} + (C - \frac{m^2}{\sin^2 \theta}) \Theta = 0
+$$
+
+Here we make no presumption about $l$, we start with $C$.
+
+We turn this into a partial differentail equation in terms of $\xi = \cos \theta$ so $\xi \in [-1, 1]$. We get
+
+$$
+\frac{d}{d\xi} [(1-\xi^2)\frac{d \Theta}{d \xi}] + (C - \frac{m^2}{1 - \xi^2}) \Theta = 0
+$$
+
+This is called Legendre's differential equation. The solutions are
+
+$$
+P^m_l(\xi) = \frac{(-1)^m}{2^l l!} (1- \xi^2)^{m/2} \frac{d^{l+m}}{d \xi^{l+m}} [(\xi^2 - 1)^l]
+$$
+
+where, $l \in \mathbb{Z}$ comes from $C=l(l+1)$, and $|m| \le l$.
+
+Quantization of $l$ and $m$ comes from the fact that the function needs to behave smoothely at the poles.
+
+Now we can move to Radial ODE:
+
+$$
+\frac{1}{R} \frac{d}{dr} (r^2 \frac{d R}{dr}) - \frac{2mr^2}{\hbar^2} (V(r)-E) = l (l+1)
+$$
+
+
+### The Radial Equation
+
+$$
+\frac{d}{dr} (r^2 \frac{d R}{dr}) - \frac{2mr^2}{\hbar^2} (V(r)-E)R = l (l+1)R
+$$
+
+This simplifies if we change variables. 
+
+$$
+u(r) = rR(r)
+$$
+
+so that,
+
+$$
+R = \frac{u}{r}, \space \frac{dR}{dr} = \frac{r(du/dr)-u}{r^2}
+$$
+
+$$
+\frac{d}{dr}(r^2 \frac{dR}{dr}) = \frac{r d^2u}{dr^2}
+$$
+
+Therefore,
+
+$$
+-\frac{\hbar^2}{2m} \frac{d^2 u}{dr^2} + [V + \frac{\hbar^2}{2m} \frac{l(l+1)}{r^2}]u = Eu
+$$
+
+This is called the radial equation; it is identical in form to one dimension schrodinger's equation, except the effective potential is 
+
+$$
+V_{ef} = V + \frac{\hbar^2}{2m} \frac{l(l+1)}{r^2}
+$$
+
+Meanwhile the normalization condition becomes
+
+$$
+\int_0^\infin |u|^2 dr = 1
+$$
+
+
+
