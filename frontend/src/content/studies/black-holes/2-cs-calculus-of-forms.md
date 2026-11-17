@@ -1,0 +1,153 @@
+### Calculus of forms
+
+A particulary important class of tensors of type $(0,s)$ is the class of totally antisymmetric tensors, i.e., covariant tensors which are antisymmetric in every pair of their arguments, i.e.,
+
+$$
+T(X_1, ..,X_i,..,X_j,..,X_s) = - T(X_1, ..,X_j,..,X_i,..,X_s)
+$$
+
+for all pairs of $i$ and $j$ and for all $X$'s. 
+
+Tensors of this kind can be constructed out of a general tensor $T$ of type $(0,s)$ by applying to it the alternating operator $A$ whose effect on it is to give the linear combination defined by
+
+$$
+AT(X_1,..,X_s) = \frac{1}{s!} \sum_{j_1,..,j_s} sgn(j_1,...,j_s) T(X_{j_1}, ..,X_{j_s})
+$$
+
+This is totally antisymmetric and totally antisymmetric tensors of type $(0,s)$ are called s-forms. Since they must vanish when any two of their arguments conincide, it follows that the s-forms span a vector space of dimension $n!/s!(n-s)!$. The space is denoted by $\Alpha^sT^*_p$.
+
+If $T_{j_1,..,j_s}$ are components of a tensor of type $(0,s)$ relative to the basis
+
+$$
+e^{j_1} \otimes .. \otimes e^{j_s}
+$$
+
+and if the tensor should be totally atisymmetric, then its $n!/(n-s)!$ distinct components can be distinguished by arranging its indices in a strictly descending sequence in the manner:
+
+$$
+T_{j_1,..,j_s} \space where \space j_1 \gt j_2 \gt .. \gt j_s
+$$
+
+A basis for $\Alpha^s T^*_p$ can be obtained by applying the alternating operator A to the basis elements of the tensor product:
+
+$$
+A(e^{j_1} \otimes .. \otimes e^{j_s})
+$$
+
+The resulting basis elements are written as the 'exterior' or the 'wedge product' of the $e^j$'s in the manner:
+
+$$
+e^{j_1} \wedge e^{j_2} \wedge .. \wedge e^{j_s} \space \space (j_1 \gt j_2 \gt .. \gt j_s)
+$$
+
+A general s-form can be written as 
+
+$$
+\mathbf{\Omega} = \Omega_{j_1,..,j_s}  e^{j_1} \wedge e^{j_2} \wedge .. \wedge e^{j_s}
+$$
+
+where summation is now extended only over strictly descending sequences.
+
+The interchanging of elements in a wedge product must be accompanied by a change of sign,
+
+$$
+e^j \wedge e^k = - e^k \wedge e^j
+$$
+
+In local coordinate basis, the express of an s-form is
+
+$$
+\mathbf{\Omega} = \Omega_{j_1..j_s} dx^{j_1} \wedge .. \wedge dx^{j_s}
+$$
+
+Given any p-form $\mathbf{\Omega}^1$ and a q-form $\mathbf{\Omega}^2$, we can form their wedge product by the rule
+
+$$
+\mathbf{\Omega}^1 \wedge \mathbf{\Omega}^2 = A(\mathbf{\Omega}^1 \otimes \mathbf{\Omega}^2)
+$$
+
+to obtain a (p+q)-form. 
+
+**Notes**: The wedge product is antisymmetrization of tensor product. Antisymmetrization reduces the number of independent components of a tensor, but it is better to say that it projects the tensor onto its antisymmetric part.
+
+Let's build a simple case. Start with a rank-2 tensor,
+
+Suppose,
+
+$$
+T = T_{ij} dx^i \otimes dx^j
+$$
+
+In two dimension $i, j=1, 2$, so
+
+$$
+T = T_{11} dx^1 \otimes dx^1 + T_{12} dx^1 \otimes dx^2 + T_{21} dx^2 \otimes dx^1 + T_{22} dx^2 \otimes dx^2
+$$
+
+There are 4 independent components. Think of it as 2 by 2 matrix
+
+$$
+T_{ij} = \begin{pmatrix}
+T_{11} & T_{12} \\
+T_{21} & T_{22}
+\end{pmatrix} 
+$$
+
+So its antisymmetric part is 
+
+$$
+T_{|ij|} = \frac{1}{2} (T_{ij} - t_{ji})
+$$
+
+$$
+T_{|ij|} = \frac{1}{2} \begin{pmatrix}
+T_{11} - T_{11} & T_{12} - T_{21} \\
+T_{21} - T_{12} & T_{22} + T_{22}
+\end{pmatrix} 
+$$
+
+$$
+T_{|ij|} = \begin{pmatrix}
+0 &  \frac{1}{2} (T_{12} - T_{21}) \\
+- \frac{1}{2} (T_{12} - T_{21}) & 0
+\end{pmatrix} 
+$$
+
+So instead of 4 independent numbers, we have 1. Antisymmetrization reduces the number of components.
+
+**Why does this become a wedge?**
+
+Start with
+
+$$
+dx^i \otimes dx^j
+$$
+
+Antisymmetrize it:
+
+$$
+dx^i \otimes dx^j \to \frac{1}{2} (dx^i \otimes dx^j - dx^j \otimes dx^i)
+$$
+
+This asymmetric combination is what we represent using wedge
+
+$$
+dx^i \wedge dx^j 
+$$
+
+And we have
+
+$$
+dx^i \wedge dx^j = - dx^j \wedge dx^i
+$$
+
+The antisymmetric tensor only remembers their difference. General tensors can be decomposed into symmetric part and anti symmetric part. 
+
+Why is this useful in differential forms? Because a $p$-form is defined to be completely antisymmetric. 
+
+For example, two form satisfies
+
+$$
+\omega(X, Y) = - \omega(Y, X)
+$$
+

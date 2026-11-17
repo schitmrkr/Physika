@@ -5,6 +5,8 @@ import gaugeElectromagnetism4 from './gauge-theory/4-constructing-electromagneti
 import gaugeToQed5 from './gauge-theory/5-gauge-to-qed.md?raw';
 
 import csBlackHolesElementaryDg from './black-holes/1-cs-elementary-differential-geometry.md?raw';
+import csBlackHolesTangentCotangent from './black-holes/1.1-cs-tangent-cotangent.md?raw';
+import csBlackHolesCalculusOfForms from './black-holes/2-cs-calculus-of-forms.md?raw';
 
 import qftAttemptsAtRelativisticQm1 from './quantum-field-theory/1-attempts-at-relativistic-qm.md?raw';
 import qftKleinGordonDirac1_1 from './quantum-field-theory/1.1-klien-gordon-dirac.md?raw';
@@ -60,6 +62,8 @@ export const STUDY_NOTES = {
   gaugeElectromagnetism4,
   gaugeToQed5,
   csBlackHolesElementaryDg,
+  csBlackHolesTangentCotangent,
+  csBlackHolesCalculusOfForms,
   qftAttemptsAtRelativisticQm1,
   qftKleinGordonDirac1_1,
   qftPauliAndDiracMatrices1_2,

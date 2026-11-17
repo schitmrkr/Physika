@@ -49,7 +49,7 @@ type Theme = 'light' | 'dark';
 
 const getInitialTheme = (): Theme => {
   if (typeof window === 'undefined') {
-    return 'light';
+    return 'dark';
   }
 
   const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -57,8 +57,31 @@ const getInitialTheme = (): Theme => {
     return stored;
   }
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return 'dark';
 };
+
+type ThemeToggleProps = {
+  isDark: boolean;
+  onToggle: () => void;
+};
+
+const ThemeToggle = ({ isDark, onToggle }: ThemeToggleProps) => (
+  <button
+    type="button"
+    className="theme-toggle"
+    role="switch"
+    aria-checked={isDark}
+    aria-label={isDark ? 'Switch to day mode' : 'Switch to night mode'}
+    title={isDark ? 'Switch to day mode' : 'Switch to night mode'}
+    onClick={onToggle}
+  >
+    <Sun size={14} strokeWidth={1.8} className="theme-toggle__sun" />
+    <span className="theme-toggle__track" aria-hidden="true">
+      <span className="theme-toggle__thumb" />
+    </span>
+    <Moon size={14} strokeWidth={1.8} className="theme-toggle__moon" />
+  </button>
+);
 
 export const AppShell = () => {
   const container = useContainer();
@@ -71,6 +94,7 @@ export const AppShell = () => {
     return window.localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'true';
   });
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
 
   const state = vm.getState();
   const isDark = theme === 'dark';
@@ -136,6 +160,10 @@ export const AppShell = () => {
             );
           })}
         </nav>
+
+        <div className="sidebar__tools">
+          <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+        </div>
 
         <div className="sidebar__fields">
           <div className="sidebar__section-head">
@@ -205,21 +233,7 @@ export const AppShell = () => {
           </div>
 
           <div className="topbar__tools">
-            <button
-              type="button"
-              className="theme-toggle"
-              role="switch"
-              aria-checked={isDark}
-              aria-label={isDark ? 'Switch to day mode' : 'Switch to night mode'}
-              title={isDark ? 'Switch to day mode' : 'Switch to night mode'}
-              onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            >
-              <Sun size={14} strokeWidth={1.8} className="theme-toggle__sun" />
-              <span className="theme-toggle__track" aria-hidden="true">
-                <span className="theme-toggle__thumb" />
-              </span>
-              <Moon size={14} strokeWidth={1.8} className="theme-toggle__moon" />
-            </button>
+            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
           </div>
         </header>
 
