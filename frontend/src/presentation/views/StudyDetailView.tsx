@@ -6,6 +6,7 @@ import {
   Clock3,
   Download,
   FileText,
+  FlaskConical,
   Paperclip,
   Star,
 } from 'lucide-react';
@@ -18,6 +19,7 @@ import { StudyCard } from '../components/StudyCard';
 import { SubjectBadge } from '../components/SubjectBadge';
 import { TagPill } from '../components/TagPill';
 import { formatBytes, formatLabel } from '../../shared/lib/files';
+import { simulationsForStudy } from '../../content/simulations';
 
 export const StudyDetailView = () => {
   const { studyId } = useParams<{ studyId: string }>();
@@ -60,6 +62,7 @@ export const StudyDetailView = () => {
 
   const study = state.study;
   const subject = state.subject;
+  const simulation = simulationsForStudy(study.id)[0];
 
   return (
     <div
@@ -94,6 +97,15 @@ export const StudyDetailView = () => {
             >
               <Star size={16} fill={study.favorite ? 'currentColor' : 'none'} />
             </button>
+            {simulation && (
+              <Link
+                to={`/simulations/${simulation.id}`}
+                className="button button--ghost button--small"
+              >
+                <FlaskConical size={15} />
+                Open simulation
+              </Link>
+            )}
             <button type="button" className="button button--ghost button--small" onClick={() => vm.exportMarkdown()}>
               <Download size={15} />
               Export .md
@@ -124,6 +136,18 @@ export const StudyDetailView = () => {
                   </li>
                 ))}
               </ol>
+            </div>
+          )}
+
+          {simulation && (
+            <div className="side-card sim-study-lab">
+              <p className="eyebrow eyebrow--muted">Interactive lab</p>
+              <h3>{simulation.title}</h3>
+              <p>{simulation.summary}</p>
+              <Link to={`/simulations/${simulation.id}`} className="text-link">
+                Open the simulation
+                <ArrowRight size={15} />
+              </Link>
             </div>
           )}
 

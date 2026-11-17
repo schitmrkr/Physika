@@ -297,7 +297,7 @@ $$
 $$
 
 
-### How Matter Creates Geometry?
+### Newton-Poisson Equation
 
 The Newton–Poisson equation describes how the gravitational potential is related to the distribution of mass in space.
 

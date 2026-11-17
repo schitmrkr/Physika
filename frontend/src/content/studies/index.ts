@@ -28,6 +28,11 @@ import qmObservables3_1 from './quantum-mechanics/3.1-observables.md?raw';
 import qmUncertaintyPrinciple3_2 from './quantum-mechanics/3.2-uncertainty-principle.md?raw';
 import qmQm3d1 from './quantum-mechanics/4-qm-3d.md?raw';
 import qmHydrogenatom4_1 from './quantum-mechanics/4.1-hydrogen-atom.md?raw';
+import qmAngularMomentum4_2 from './quantum-mechanics/4.2-angular-momentum.md?raw';
+import qmSpin4_3 from './quantum-mechanics/4.3-spin.md?raw';
+import qmIdenticalParticles5 from './quantum-mechanics/5-identical-particles.md?raw';
+import qmSymmetriesConservation6 from './quantum-mechanics/6-symmetries-conservation.md?raw';
+
 
 import maxwellsEquation from './electromagnetism/maxwells-equations.md?raw';
 import electricFields from './electromagnetism/electric-fields.md?raw';
@@ -75,6 +80,10 @@ export const STUDY_NOTES = {
   qmUncertaintyPrinciple3_2,
   qmQm3d1,
   qmHydrogenatom4_1,
+  qmAngularMomentum4_2,
+  qmSpin4_3,
+  qmIdenticalParticles5,
+  qmSymmetriesConservation6,
   electricFields,
   magneticFields,
   maxwellsEquation,

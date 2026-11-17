@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   ChevronRight,
+  FlaskConical,
   LibraryBig,
   Moon,
   PanelLeftClose,
@@ -14,14 +15,18 @@ import { ShellViewModel } from '../presentation/viewmodels/ShellViewModel';
 import { SubjectGlyph } from '../presentation/components/SubjectGlyph';
 import { PhysikaMark } from '../presentation/components/PhysikaMark';
 import { SUBJECTS } from '../domain/taxonomy/subjects';
+import { SIMULATIONS } from '../content/simulations';
 
 const SECTION_LABELS: { match: (pathname: string) => boolean; label: string }[] = [
   { match: (pathname) => pathname.startsWith('/vault/'), label: 'Reading room' },
+  { match: (pathname) => pathname.startsWith('/simulations/'), label: 'Simulation bench' },
+  { match: (pathname) => pathname.startsWith('/simulations'), label: 'Simulation lab' },
   { match: () => true, label: 'Study library' },
 ];
 
 const NAV_ITEMS = [
   { to: '/vault', label: 'Study library', index: '01', icon: LibraryBig, end: false },
+  { to: '/simulations', label: 'Simulation lab', index: '02', icon: FlaskConical, end: false },
 ];
 
 const FIELD_ORDER = [
@@ -69,8 +74,12 @@ export const AppShell = () => {
 
   const state = vm.getState();
   const isDark = theme === 'dark';
+  const labMode = location.pathname.startsWith('/simulations');
+  const fieldBase = labMode ? '/simulations' : '/vault';
   const sectionLabel =
     SECTION_LABELS.find((section) => section.match(location.pathname))?.label ?? 'Study library';
+  const fieldCount = (subjectId: string): number =>
+    labMode ? SIMULATIONS.filter((item) => item.subjectId === subjectId).length : 0;
 
   const fieldRail = useMemo(
     () =>
@@ -130,26 +139,31 @@ export const AppShell = () => {
 
         <div className="sidebar__fields">
           <div className="sidebar__section-head">
-            <span>Field index</span>
-            <span>{state.readings.filter((reading) => reading.count > 0).length}/{SUBJECTS.length}</span>
+            <span>{labMode ? 'Lab index' : 'Field index'}</span>
+            <span>
+              {fieldRail.filter((reading) => (labMode ? fieldCount(reading.subject.id) > 0 : reading.count > 0))
+                .length}
+              /{SUBJECTS.length}
+            </span>
           </div>
           <div className="field-rail">
             {fieldRail.map((reading) => {
+              const count = labMode ? fieldCount(reading.subject.id) : reading.count;
               const isActive =
-                location.pathname === '/vault' &&
+                location.pathname === fieldBase &&
                 new URLSearchParams(location.search).get('subject') === reading.subject.id;
 
               return (
                 <Link
                   key={reading.subject.id}
-                  to={`/vault?subject=${reading.subject.id}`}
+                  to={`${fieldBase}?subject=${reading.subject.id}`}
                   title={reading.subject.name}
-                  className={`field-rail__item ${isActive ? 'is-active' : ''} ${reading.count === 0 ? 'is-dim' : ''}`}
+                  className={`field-rail__item ${isActive ? 'is-active' : ''} ${count === 0 ? 'is-dim' : ''}`}
                   style={{ '--subject': reading.subject.accent } as CSSProperties}
                 >
                   <SubjectGlyph glyph={reading.subject.glyph} size={14} />
                   <span>{reading.subject.shortName}</span>
-                  <span className="field-rail__count">{reading.count}</span>
+                  <span className="field-rail__count">{count}</span>
                 </Link>
               );
             })}
@@ -160,7 +174,7 @@ export const AppShell = () => {
           <div className="local-status">
             <span className="local-status__dot" />
             <span>
-              <strong>{state.total} entries indexed</strong>
+              <strong>{labMode ? `${SIMULATIONS.length} benches online` : `${state.total} entries indexed`}</strong>
             </span>
           </div>
         </div>
