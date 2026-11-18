@@ -1,4 +1,4 @@
-### Calculus of forms
+### S-Form
 
 A particulary important class of tensors of type $(0,s)$ is the class of totally antisymmetric tensors, i.e., covariant tensors which are antisymmetric in every pair of their arguments, i.e.,
 
@@ -11,10 +11,26 @@ for all pairs of $i$ and $j$ and for all $X$'s.
 Tensors of this kind can be constructed out of a general tensor $T$ of type $(0,s)$ by applying to it the alternating operator $A$ whose effect on it is to give the linear combination defined by
 
 $$
-AT(X_1,..,X_s) = \frac{1}{s!} \sum_{j_1,..,j_s} sgn(j_1,...,j_s) T(X_{j_1}, ..,X_{j_s})
+AT(X_1,..,X_s) = \frac{1}{s!} \sum_{j_1,..,j_s} \text{sgn}(j_1,...,j_s) T(X_{j_1}, ..,X_{j_s})
 $$
 
-This is totally antisymmetric and totally antisymmetric tensors of type $(0,s)$ are called s-forms. Since they must vanish when any two of their arguments conincide, it follows that the s-forms span a vector space of dimension $n!/s!(n-s)!$. The space is denoted by $\Alpha^sT^*_p$.
+This is totally antisymmetric and totally antisymmetric tensors of type $(0,s)$ are called s-forms. 
+
+For an $n$-dimensional tangent space, choose a basis:
+
+$$
+\{ e_1, e_2, ..., e_n\}
+$$
+
+The independent components are therefore determined by selecting $s$ distinct basis vectors. Their ordering does not matter because different orderings differ only by a sign. 
+
+Also, they must vanish when any two of their arguments conincide. Thus, we simply count the number of ways to choose $s$ elements from $n$:
+
+$$
+\text{dim}(\Alpha^sT^*_p) = \frac{n!}{s!(n-s)!}
+$$
+
+The space is denoted by $\Alpha^sT^*_p$.
 
 If $T_{j_1,..,j_s}$ are components of a tensor of type $(0,s)$ relative to the basis
 
@@ -25,7 +41,7 @@ $$
 and if the tensor should be totally atisymmetric, then its $n!/(n-s)!$ distinct components can be distinguished by arranging its indices in a strictly descending sequence in the manner:
 
 $$
-T_{j_1,..,j_s} \space where \space j_1 \gt j_2 \gt .. \gt j_s
+T_{j_1,..,j_s} \space \text{where} \space j_1 \gt j_2 \gt .. \gt j_s
 $$
 
 A basis for $\Alpha^s T^*_p$ can be obtained by applying the alternating operator A to the basis elements of the tensor product:
@@ -96,13 +112,13 @@ $$
 So its antisymmetric part is 
 
 $$
-T_{|ij|} = \frac{1}{2} (T_{ij} - t_{ji})
+T_{|ij|} = \frac{1}{2} (T_{ij} - T_{ji})
 $$
 
 $$
 T_{|ij|} = \frac{1}{2} \begin{pmatrix}
 T_{11} - T_{11} & T_{12} - T_{21} \\
-T_{21} - T_{12} & T_{22} + T_{22}
+T_{21} - T_{12} & T_{22} - T_{22}
 \end{pmatrix} 
 $$
 

@@ -7,6 +7,11 @@ import gaugeToQed5 from './gauge-theory/5-gauge-to-qed.md?raw';
 import csBlackHolesElementaryDg from './black-holes/1-cs-elementary-differential-geometry.md?raw';
 import csBlackHolesTangentCotangent from './black-holes/1.1-cs-tangent-cotangent.md?raw';
 import csBlackHolesCalculusOfForms from './black-holes/2-cs-calculus-of-forms.md?raw';
+import csBlackHolesExteriorDifferentiation from './black-holes/2.1-cs-exterior-differentiation.md?raw';
+import csBlackHolesLieBracketDifferentiation from './black-holes/2.2-cs-lie-bracket-differentiation.md?raw';
+import csBlackHolesCovariantDifferentiation from './black-holes/3-cs-covariant-differentiation.md?raw';
+import csBlackHolesParallelTransportGeodesic from './black-holes/3.1-cs-parallel-transport-geodesic.md?raw';
+import csBlackHolesCurvatureFormsCartan from './black-holes/4-cs-curvature-forms-cartan.md?raw';
 
 import qftAttemptsAtRelativisticQm1 from './quantum-field-theory/1-attempts-at-relativistic-qm.md?raw';
 import qftKleinGordonDirac1_1 from './quantum-field-theory/1.1-klien-gordon-dirac.md?raw';
@@ -64,6 +69,11 @@ export const STUDY_NOTES = {
   csBlackHolesElementaryDg,
   csBlackHolesTangentCotangent,
   csBlackHolesCalculusOfForms,
+  csBlackHolesExteriorDifferentiation,
+  csBlackHolesLieBracketDifferentiation,
+  csBlackHolesCovariantDifferentiation,
+  csBlackHolesParallelTransportGeodesic,
+  csBlackHolesCurvatureFormsCartan,
   qftAttemptsAtRelativisticQm1,
   qftKleinGordonDirac1_1,
   qftPauliAndDiracMatrices1_2,

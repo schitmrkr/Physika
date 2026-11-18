@@ -189,6 +189,39 @@
   background: var(--white);
 }
 
+.markdown-body [align='center'] {
+  text-align: center;
+}
+
+.markdown-body [align='center'] img {
+  margin-inline: auto;
+}
+
+.markdown-body .markdown-image {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.markdown-body .markdown-image img {
+  margin-inline: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+:root[data-theme='dark'] .markdown-body .markdown-image {
+  background: var(--paper-raised);
+}
+
+:root[data-theme='dark'] .markdown-body .markdown-image img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .markdown-body table:has(img) {
   border-collapse: separate;
   border-spacing: 12px;
