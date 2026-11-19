@@ -1,0 +1,365 @@
+### The Metric
+
+A metric tensor $g$ is a non singular symmetric tensor-field of type (0,2). Thus,
+
+a. $g: T^1_0 \times T^1_0 \to R^1$
+
+b. $g(X,Y) = g(Y, X)$ for every $X, Y \in T^0_1$
+
+c. $g(X,Y) = 0$ for every $Y \in T^0_1$ implies that $X=0$
+
+The b condition ensures symmetry of $g$ while the c condition its non singular nature.
+
+In local basis we write,
+
+$$
+g= g_{ij} e^i \otimes e^j, \space g_{ij} = g_{ji}
+$$
+
+Similarly in local coordinate basis
+
+$$
+g = g_{ij} dx^i \otimes dx^j
+$$
+
+Also the requirement that the metric tensor be non-singular is equivalent to the requiremnt
+
+$$
+g^{ij} g_{jk} = \delta^i_k
+$$
+
+We may regard $g^{ij}$ as the components of a tensor field $g^{-1}$, of type $(2,0)$
+
+$$
+g^{-1} = g^{ij} e_i \otimes e_j
+$$
+
+One use of the metric tensor to define a path length $L$, along a curve $\lambda$ on $M$, from $\lambda(a)$ to $\lambda(b)$ by the formula
+
+$$
+L = \int_a^b \left| g_{ij} \frac{dx^i(\lambda(t))}{dt} \frac{dx^j(\lambda(t))}{dt} \right|^{1/2} dt
+$$
+
+$$
+ds^2 = g_{ij} dx^i dx^j
+$$
+
+### Connection Derived From A Metric
+
+We can endow the manifold with a unique torsion free connection by the requirement
+
+$$
+\nabla g = 0
+$$
+
+With such a connection 
+
+$$
+\nabla(g \otimes T) = g \otimes \nabla T
+$$
+
+where $T$ is any tensor field.
+
+To deduce the torsion free connection which follows from the requirement, we evaluate $\nabla_X g$ with $g$ expressed in the form $g = g_{ij} e^i \otimes e^j, \space g_{ij} = g_{ji}$. Thus we require
+
+$$
+\nabla_X g_{ij} e^i \otimes e^j = X g_{ij} e^i \otimes e^j + g_{ij} [(\nabla_X e^i) \otimes e^j + e^i \otimes (\nabla_X e^j)] = 0
+$$
+
+Making use of equation $\nabla_X e^j = - \omega^j_i(X)e^i$, we have
+
+$$
+[Xg_{ij} - g_{ij} \omega^l_i(X) - g_{il}\omega^l_j(X)] e^i \otimes e^j = 0
+$$
+
+We conclude that
+
+$$
+(dg_{ij} - g_{ij} \omega^l_i - g_{il} \omega^l_j)(X) = 0
+$$
+
+Letting $X=\partial_k$ in a local coordinate basis, we obtain from equation above the requirement
+
+$$
+g_{ij,k} = g_{ij} \Gamma^l_{ik} + g_{il} \Gamma^l_{jk}
+$$
+
+where by our assumption of zero torsion, the $\Gamma$ symbos are symmetric in their covariant indices. From equation we derive, in the usual fashion, that
+
+$$
+g_{ij} \Gamma^l_{jk} = \frac{1}{2} (\frac{\partial g_{ij}}{\partial x^k} + \frac{\partial g_{ik}}{\partial x^j} - \frac{\partial g_{jk}}{\partial x^i})
+$$
+
+or, equivalently,
+
+$$
+\Gamma^i_{jk} = \frac{1}{2} g^{il} (\frac{\partial g_{ij}}{\partial x^k} + \frac{\partial g_{ik}}{\partial x^j} - \frac{\partial g_{jk}}{\partial x^i})
+$$
+
+The connection is thus uniquely specified; and this connection underlies Riemannian geometry.
+
+The $\Gamma$-symbols appropirate to a metric $g$ are called the Christoffel symbols and the connection itself is called the Christoffel connection.
+
+Two elementry consequences of the Christoffel connection are the following.
+
+The first is that the scalar product, $(X,Y)$, of two contravariant vector-fields, $X$ and $Y$, defined by 
+
+$$
+g(X,Y) = (X \cdot Y) = g_{ij} X^i Y^j
+$$
+
+remains unchanged as $X$ and $Y$ are parallely propagated along a curve $\lambda$ on $M$. For,
+
+$$
+D(g_{ij} X^i Y^j) = D(g_{ij})X^iY^j + g_{ij} (Y^j DX^i + X^i DY^j) = 0
+$$
+
+since $D g_{ij}$ vanishes by the virtue of the condition $\nabla \mathbf{g} = 0$ and $DX^i$ and $DY^j$ vanish by the assumption of parallel propagation along $\lambda$. Therefore,
+
+$$
+g(X,Y) = constant
+$$
+
+A second consequence is that the geodesic equation has requirement that the tangent vector to the curve $\lambda$, as it is parallely propagated along $\lambda$, remains a multiple of itself, now emerges as the Euler-Lagrange equation of an external problem. Thus, consider te integral
+
+$$
+I = \int_a^b L ds, \space L = g_{ij} \frac{dx^i(\lambda(s))}{ds} \frac{dx^j(\lambda(s))}{ds}
+$$
+
+The Euler Lagrange equation for the extremal problem associated with the integral $I$ is
+
+$$
+\frac{d}{dx}(\frac{\partial L}{\partial \dot{x}^j}) - \frac{\partial L}{\partial x_j} = 0, \space \dot{x}^j = \frac{dx^j(\lambda(s))}{ds}
+$$
+
+Since
+
+$$
+\frac{\partial L}{\partial \dot{x}^j} = 2 g_{ij} \dot{x}^i, \space \frac{\partial L}{\partial x^j} = g_{ik,j} \dot{x}^i \dot{x}^j
+$$
+
+the Euler-Lagrange reduces to 
+
+$$
+2 g_{ij} \ddot{x}^i - (g_{ij,k} - \frac{1}{2} g_{ik,j}) \dot{x}^i \dot{x}^j = 0
+$$
+
+or,
+
+$$
+2 g_{ij} \ddot{x^i} - \frac{1}{2} (g_{ij,k} + g_{jk,k} - g_{ik,j}) \dot{x}^i \dot{x}^j = 0
+$$
+
+Contracting this last equation with $g_{jl}$, we obtain
+
+$$
+\ddot{x}^l + \Gamma^l_{ik} \dot{x}^i \dot{x}^k = 0
+$$
+
+An alternative form of the foregoing equation, which we shall find useful, is to express it in terms of the 'velocity'
+
+$$
+u^j = \dot{x}^j = \frac{dx^j}{ds}
+$$
+
+Then, 
+
+$$
+\ddot{x}^j = u^j_{,k} u^k
+$$
+
+and the equation of the geodesic takes the form
+
+$$
+(u^j_{,k} + \Gamma^j_{ik} u^i) u^k = u^j_{;k} u^k = 0
+$$
+
+If the geodesic is not affinely parametrized, it will take the form
+
+$$
+u^j_{;k} u^k = \phi u^j 
+$$
+
+where $\phi$ is some scalar function.
+
+***
+**Notes**
+
+Initailly there are two imposed conditions:
+
+1. $\nabla g = 0$ which means parallel transport does not change length or angles.
+2. $T(X, Y)=0$ which means that $\nabla_X Y - \nabla_Y X = [X, Y]$
+
+There is exactly one connection satisfying both condition. That is Levi-Civita connection.
+
+What does $\nabla g = 0$ actually mean?
+
+Here $g$ itself is a tensor field.
+
+$$
+g = g_{ij} e^i \otimes e^j
+$$
+
+Here $e^i$ is a basis of one-forms.
+
+We differentiate $g$, the derivative has to act on everything
+
+$$
+\nabla_X g = \nabla_X (g_{ij} e^i \otimes e^j) = X(g_{ij}) e^i \otimes e^j + g_{ij} [(\nabla_X e^i) \otimes e^j + e^i \otimes (\nabla_X e^j)] 
+$$
+
+Recall the connection one-forms:
+
+$$
+\nabla_X e^j = - \omega^j_i (X) e^i
+$$
+
+Therefore,
+
+$$
+\nabla_X g = X(g_{ij}) e^i \otimes e^j - g_{ij} \omega^i_l e^l \otimes e^j - g_{ij} \omega^j_l e^i \otimes e^l
+$$
+
+Relabeling dummy indices, this becomes
+
+$$
+\nabla_X g = (X(g_{ij}) - g_{lj} \omega^l_i(X) - g_{il} \omega^l_j(X)) e^i \otimes e^j = 0
+$$
+
+Thus,
+
+$$
+X(g_{ij}) - g_{lj} \omega^l_i(X) - g_{il} \omega^l_j(X) = 0
+$$
+
+Now move to coordinate basis. Take $$X=\partial_k$$, we get
+
+$$
+\omega^l_i(\partial_k) = \Gamma^l_{ik}
+$$
+
+Therefore,
+
+$$
+\partial_k g_{ij} = g_{lj} \Gamma^l_{ik} + g_{il} \Gamma^l_{jk}
+$$
+
+Using shorthand 
+
+$$
+g_{ij,k} = \frac{\partial g_{ij}}{\partial x^k}
+$$
+
+We have,
+
+$$
+g_{ij,k} = g_{lj} \Gamma^l_{ik} + g_{il} \Gamma^l_{jk}
+$$
+
+This is the metric compatibility condition in coordinates.
+
+Now zero torsion enters
+
+$$
+T(\partial_i, \partial_j) = 0
+$$
+
+Since coordinate basis vectors commute,
+
+$$
+[\partial_i, \partial_j] = 0
+$$
+
+We get,
+
+$$
+\nabla_{\partial_i} \partial_j = \nabla_{\partial_j} \partial_i
+$$
+
+But
+
+$$
+\nabla_{\partial_i} \partial_j  = \Gamma^k_{ji} \partial_k
+$$
+
+Therefore, we get
+
+$$
+\Gamma^k_{ij} = \Gamma^k_{ji}
+$$
+
+Deriving the Christoffel symbols we now have
+
+$$
+g_{ij,k} = g_{lj} \Gamma^l_{ik} + g_{il} \Gamma^l_{jk} = g_{lj} \Gamma^l_{ik} + g_{il} \Gamma^l_{jk} 
+$$
+
+Similarily,
+
+$$
+g_{ij,k} = g_{lj} \Gamma^l_{ik} + g_{il} \Gamma^l_{jk} 
+$$
+
+$$
+g_{ik,j} = g_{lk} \Gamma^l_{ij} + g_{il} \Gamma^l_{kj} 
+$$
+
+$$
+g_{jk,i} = g_{lk} \Gamma^l_{ji} + g_{jl} \Gamma^l_{ki} 
+$$
+
+Add first two equation and subtract the third, you get
+
+$$
+\frac{1}{2}(g_{ij,k} + g_{ik,j} - g_{jk,i}) = g_{il} \Gamma^l_{kj}
+$$
+
+$$
+\Gamma^i_{jk} = \frac{1}{2} g^{il} (\frac{\partial g_{ij}}{\partial x^k} + \frac{\partial g_{ik}}{\partial x^j} - \frac{\partial g_{jk}}{\partial x^i})
+$$
+
+It means once you know $g_{ij}$, we can know $\Gamma^i_{jk}$.
+
+Christoffel symbol describes the connection in a particular coordinate system, they are not themselves curvature.
+
+Let $u$ be tangent vector,
+
+$$
+u  = \frac{dx^i}{ds} \partial_i
+$$
+
+Write,
+
+$$
+u^i = \dot{x}^i
+$$
+
+The geodesic condition is 
+
+$$
+\nabla_u u = 0
+$$
+
+Therefore geodesic equation becomes 
+
+$$
+\ddot{x}^l + \Gamma^l_{ik} \dot{x}^i \dot{x}^k = 0
+$$
+
+Also the same geodesic equation can be obtained from variational principle of Euler-Lagrange equation.
+
+What does $\nabla_u u = \phi u$ mean geometrically?
+
+It means that the tangent vector changes only in the direction of itself. The tangent vector may become shorter or longer but its direction does not bend. 
+
+If we choose the parameter correctly, we can remove the change in magnitude and obtain
+
+$$
+\nabla_u u = 0
+$$
+
+That parameter is affine parameter.
+
+The connection for which $\nabla g = 0$ together with $T(X,Y)=0$ is called Levi Civita connection.
+
+***

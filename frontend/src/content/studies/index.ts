@@ -12,6 +12,9 @@ import csBlackHolesLieBracketDifferentiation from './black-holes/2.2-cs-lie-brac
 import csBlackHolesCovariantDifferentiation from './black-holes/3-cs-covariant-differentiation.md?raw';
 import csBlackHolesParallelTransportGeodesic from './black-holes/3.1-cs-parallel-transport-geodesic.md?raw';
 import csBlackHolesCurvatureFormsCartan from './black-holes/4-cs-curvature-forms-cartan.md?raw';
+import csBlackHolesRiemannTensor from './black-holes/4.1-cs-riemann-tensor.md?raw';
+import csBlackHolesBianchiIdentity from './black-holes/4.2-cs-bianchi-identity.md?raw';
+import csBlackHolesRiemannianGeo from './black-holes/5-riemannian-geometry.md?raw';
 
 import qftAttemptsAtRelativisticQm1 from './quantum-field-theory/1-attempts-at-relativistic-qm.md?raw';
 import qftKleinGordonDirac1_1 from './quantum-field-theory/1.1-klien-gordon-dirac.md?raw';
@@ -74,6 +77,9 @@ export const STUDY_NOTES = {
   csBlackHolesCovariantDifferentiation,
   csBlackHolesParallelTransportGeodesic,
   csBlackHolesCurvatureFormsCartan,
+  csBlackHolesRiemannTensor,
+  csBlackHolesBianchiIdentity,
+  csBlackHolesRiemannianGeo,
   qftAttemptsAtRelativisticQm1,
   qftKleinGordonDirac1_1,
   qftPauliAndDiracMatrices1_2,

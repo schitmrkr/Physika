@@ -100,9 +100,138 @@ $$
 T(X,Y) = \text{asymmetric connection change - intrinsic non commutativity}
 $$
 
+The exterior derivative is an operator that takes a differential $k$-form and produces a differential $(k+1)$-form:
 
+$$
+d: \Omega^k(M) \to \Omega^{k+1}(M)
+$$
 
-***
+For an arbitrary $1$-form $\alpha$, its exterior derivative $d\alpha$  is a $2$-form.
+
+We want to determine its action on two vector fields $X$ and $Y$.
+
+A $k$-form in general maps $k$ vector fields to a scalar.  A differential $k$-form is defined as an alternating covariant tensor field of rank $k$. Alternating means that exchanging any two arguments changes the sign.
+
+For a $2$-form:
+
+$$
+d\alpha(X, Y) = -d\alpha(Y, X)
+$$
+
+This implies that 
+
+$$
+d\alpha(X, X) = 0
+$$
+
+A 1-form $\alpha$ maps a vector field into a smooth function:
+
+$$
+\alpha: \chi(M) \to C^\infin(M)
+$$
+
+For example, if 
+
+$$
+X = X^\mu \partial_\mu
+$$
+
+and 
+
+$$
+\alpha = \alpha_\nu dx^\nu
+$$
+
+then,
+
+$$
+\alpha(X) = \alpha_\nu X^\nu
+$$
+
+This is a scalar function on the manifold. We can differentiate this scalar function along another vector field.
+
+For instance:
+
+$$
+X[\alpha(Y)]
+$$
+
+means that we evaluate the $1$-form on $Y$, obtaining a scalar function, and then differentiate it along $X$.
+
+Since $d\alpha$ must be antisymmetric in $X$ and $Y$, consider:
+
+$$
+X[\alpha(Y)] - Y[\alpha(X)]
+$$
+
+This expression is antisymmetric because exchanging $X$ and $Y$ changes its sign.
+
+The exterior derivative must be a tensor, meaning its value at a point should depend only on the values of $X$ and $Y$ at that point.
+
+Suppose we replace $X$ with $fX$, where $f$ is a smooth scalar function.
+
+$$
+fX[\alpha(Y)] - Y[\alpha(fX)] = fX[\alpha(Y)] - Y[f \alpha(X)] 
+$$
+
+$$
+= fX[\alpha(Y)] - Y(f) \alpha(X) - fY[\alpha(X)]
+$$
+
+$$
+= f (X[\alpha(Y)] - Y[\alpha(X)]) - Y(f) \alpha(X) 
+$$
+
+We have an unwanted extra term:
+
+$$
+-Y(f)\alpha(X)
+$$
+
+This means our expression is not tensorial in $X$.
+
+Introduce the Lie bracket to cancel the extra term
+
+$$
+[fX, Y] = f[X, Y] - Y(f) X
+$$
+
+Applying the $1$-form $\alpha$:
+
+$$
+\alpha([fX, Y]) = f \alpha([X, Y]) - Y(f) \alpha(X)
+$$
+
+Now consider the modified expression:
+
+$$
+d\alpha(X, Y) = X[\alpha(Y)] - Y[\alpha(X)] - \alpha([X, Y])
+$$
+
+Replace $X$ with $fX$:
+
+$$
+d\alpha(fX, Y) = fX[\alpha(Y)] - Y[f \alpha(X)] - \alpha([fX, Y])
+$$
+
+$$
+= fX[\alpha(Y)] - Y(f) \alpha(X) -fY[\alpha(X)] - f \alpha([X, Y]) + Y(f) \alpha(X)
+$$
+
+$$
+= fX[\alpha(Y)] - fY[\alpha(X)] - f \alpha([X, Y])
+$$
+
+$$
+= f(X[\alpha(Y)] - Y[\alpha(X)] - \alpha([X, Y]))
+$$
+Therefore,
+
+$$
+d\alpha(fX, Y) = f \space d\alpha(X, Y)
+$$
+
+Thus, the expression is linear over smooth functions in both vector-field arguments. It is therefore tensorial.
 
 General formula for the exterior derivative of a 1-form $\alpha$. 
 
@@ -110,32 +239,107 @@ $$
 d\alpha(X, Y) = X[\alpha Y] - Y[\alpha X] - \alpha[X, Y]
 $$
 
-Now set $\alpha = e^j$
+Suppose we have a manifold with a local basis of vector fields:
 
 $$
-de^j(X, Y) = X e^j(Y) - Y e^j(X) - e^j([X, Y])
+\{ E_1, E_2, ..., E_n \}
 $$
 
-Therefore,
+The corresponding dual basis of 1-forms is:
 
 $$
-T^j(X, Y) = de^j(X, Y) + \omega^j_l(X)e^l(Y) - \omega^j_l(Y)e^l(X)
+\{ e^1, e^2, ..., e^n \}
 $$
 
-Recall the definition of wedge product
+They satisfy:
 
 $$
-(\alpha \wedge \beta)(X, Y) = \alpha(X)\beta(Y) - \alpha(Y)\beta(X)
+e^j (E_k) = \delta^j_k
+$$
+
+More generally, any vector field $Y$ can be written as:
+
+$$
+Y = e^l(Y) E_l
+$$
+
+The connection $1$-forms $\omega^j_l$ tells us how the basis vector fields change when we move along the manifold.
+
+$$
+\nabla_X E_l = \omega^j_l(X) E_j
+$$
+
+If we evaluate torsion using the dual basis 1-form $e^j$, we obtain its components:
+
+$$
+T^j(X, Y) = e^j(T(X, Y))
+$$
+
+$$
+= e^j(\nabla_X Y - \nabla_Y X - [X, Y])
+$$
+
+$$
+= e^j \nabla_X Y - e^j \nabla_Y X - e^j ([X, Y])
+$$
+
+We know that
+
+$$
+Y = e^l(Y) E_l
 $$
 
 So,
 
 $$
-T^j(X, Y) = de^j(X, Y) + (\omega^j_l \wedge e^l)(X,Y)
+\nabla_X Y = \nabla_X (e^l(Y) E_l)
 $$
 
 $$
-T^j(X, Y) = (de^j + \omega^j_l \wedge e^l)(X,Y)
+= X[e^l(Y)] E_l + e^l(Y) \nabla_X E_l
+$$
+
+$$
+= X[e^l(Y)] E_l + e^l(Y) \omega^j_l(X) E_j
+$$
+
+$$
+= (X[e^j(Y)] + e^l(Y) \omega^j_l(X)) E_j
+$$
+
+Therefore,
+
+$$
+e^j(\nabla_X Y) = X[e^j(Y)] + e^l(Y) \omega^j_l(X)
+$$
+
+and
+
+$$
+e^j(\nabla_Y X) = Y[e^j(X)] + e^l(X) \omega^j_l(Y)
+$$
+
+Now consider torsion equation again,
+
+$$
+T^j(X, Y) = X[e^j(Y)] - Y[e^j(X)] - e^j ([X, Y]) \\
++ e^l(Y) \omega^j_l(X) - e^l(X) \omega^j_l(Y)
+$$
+
+Recall that:
+
+$$
+de^j(X, Y) = X[e^j(Y)] - Y[e^j(X)] - e^j ([X, Y])
+$$
+
+$$
+(\omega^j_l \wedge e^l)(X, Y) = e^l(Y) \omega^j_l(X) - e^l(X) \omega^j_l(Y)
+$$
+
+So, the tensor equation  becomes:
+
+$$
+T^j(X, Y) = de^j(X, Y) + (\omega^j_l \wedge e^l)(X, Y)
 $$
 
 Cartan's first equation of structure is compact way of saying torsion comes from two things: how basis itself changes, $de^j$ and how the connection changes the basis, $\omega^j_l \wedge e^l$.
@@ -199,63 +403,28 @@ $$
 Now, finally we get,
 
 $$
-R(X,Y)Z = \{ X \langle \omega^j_l, Y \rangle - Y  \langle \omega^j_l, X \rangle + \langle \omega^j_l, [X, Y] \rangle + \omega^j_k(X)\omega^k_l(Y) - \omega^j_k(Y) \omega^j_l(X)   \} e^l(Z) e_j
+R(X,Y)Z = \{
+[X\omega^j_l(Y) - Y\omega^j_l(X)  - \omega^j_l([X,Y]) \\
++ \omega^j_k(X)\omega^k_l(Y) - \omega^j_k(Y) \omega^j_l(X)] 
+\} e^l(Z) e_j
 $$
 
-Also making use of identity,
+Therefore,
 
 $$
-\frac{1}{2} R(X,Y)Z = (d\omega^j_l + \omega^j_k \wedge \omega^k_l)(X, Y) e^l(Z) e_j
+R(X,Y)Z = (d\omega^j_l + \omega^j_k \wedge \omega^k_l) e^l(Z) e_j
 $$
 
-Accordingly, if $\omega$ is any one-form,
+We can now define $2$-form:
 
 $$
-R(\omega, Z, X, Y) = R^j_{lkm}[e_j \otimes e^l \otimes (e^k \wedge e^m)](\omega, Z, X, Y)
+\Omega^j_l = d\omega^j_l + \omega^j_k \wedge \omega^k_l
 $$
 
-$$
-= (R^j_{lkm} e^k \wedge e^m)(X, Y)e^l(Z)e_j(\omega)
-$$
-
-From a comparison of equations, we obtain relation
+This is called the curvature $2$-form.
 
 $$
-\frac{1}{2} R^j_{lkm} e^k \wedge e^m = d\omega^j_l + \omega^j_k \wedge \omega^k_l
-$$
-
-Defining the two-form,
-
-$$
-\mathbf{\Omega}^j_l = d\omega^j_l + \omega^j_k \wedge \omega^k_l
-$$
-
-we have Cartan's second equation of structure:
-
-$$
-\frac{1}{2} R^j_{lkm} e^k \wedge e^m  = \mathbf{\Omega}^j_l
-$$
-
-In a local coordinate basis
-
-$$
-\omega^j_l = \Gamma^j_{lm} dx^m
-$$
-
-therefore,
-
-$$
-d\omega^j_l = \Gamma^j_{lm,n} dx^n \wedge dx^m = \frac{1}{2}(\Gamma^j_{lm,n} - \Gamma^j_{ln,m})dx^n \wedge dx^m 
-$$
-
-Also,
-
-$$
-\omega^j_k \wedge \omega^k_l = \Gamma^j_{kn} \Gamma^k_{lm} dx^n \wedge dx^m
-$$
-
-$$
-= \frac{1}{2}( \Gamma^j_{kn} \Gamma^k_{lm} -  \Gamma^j_{km} \Gamma^k_{ln}) dx^n \wedge dx^m
+R(X,Y)Z = \Omega^j_l e^l(Z) e_j
 $$
 
 Accordingly, Cartan's second equation of structure is equivalent to the definition
